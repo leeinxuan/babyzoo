@@ -1,14 +1,18 @@
 import { StatusBar } from 'expo-status-bar';
-import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { SafeAreaView, StyleSheet } from 'react-native';
 import Navigation from './src/navigation';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { GluestackUIProvider } from '@gluestack-ui/themed';
+import { config } from '@gluestack-ui/config';
 
 export default function App() {
   return (
     <SafeAreaProvider>
       <SafeAreaView style={styles.container}>
-        <StatusBar style="auto" />
-        <Text>BABY ZOO</Text>
+        <StatusBar />
+        <GluestackUIProvider config={config}>
+        <Navigation />
+        </GluestackUIProvider>
       </SafeAreaView>
     </SafeAreaProvider>
   );
@@ -17,8 +21,6 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+
   },
 });

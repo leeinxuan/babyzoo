@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-import { Box,Image, Text, Pressable } from '@gluestack-ui/themed';
+import { Box, Image, Text, Pressable } from '@gluestack-ui/themed';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -64,11 +64,11 @@ const MyDrawer = () => {
       screenOptions={{
         drawerStyle: { width: 300 },
         drawerActiveBackgroundColor: 'white',
-        drawerInactiveTintColor:'#666666',
+        drawerInactiveTintColor: '#666666',
         drawerActiveTintColor: '#6200EE',
         headerTitleStyle: {
           fontWeight: '400',
-          fontSize: 20
+          fontSize: 20,
         },
         drawerLabelStyle: { fontSize: 14, fontWeight: '400' },
       }}
@@ -81,7 +81,7 @@ const MyDrawer = () => {
           headerShown: false,
           title: "Home",
           drawerIcon: ({ color }) => (
-            <MaterialCommunityIcons name="home" color={ color }  size={26} />
+            <MaterialCommunityIcons name="home" color={color} size={26} />
           ),
         }}
       />
@@ -92,7 +92,7 @@ const MyDrawer = () => {
           //headerShown: false,
           title: "Account",
           drawerIcon: ({ color }) => (
-            <MaterialCommunityIcons name="account-circle" color={ color } size={26} />
+            <MaterialCommunityIcons name="account-circle" color={color} size={26} />
           ),
         }}
       />
@@ -103,7 +103,7 @@ const MyDrawer = () => {
           //headerShown: false,
           title: "Settings",
           drawerIcon: ({ color }) => (
-            <MaterialCommunityIcons name="cog" color={ color } size={26} />
+            <MaterialCommunityIcons name="cog" color={color} size={26} />
           ),
         }}
       />
@@ -116,8 +116,13 @@ const MyTabs = () => {
     <Tab.Navigator
       initialRouteName="HomeStack"
       screenOptions={{
-        tabBarActiveTintColor: '#6200EE',
-        tabBarStyle: { height: 56 }
+        tabBarActiveTintColor: '#FFF2C5',
+        
+        tabBarStyle: {
+          height: 70,
+          backgroundColor: "#D56A6A",
+        },
+
         //headerShown:false
       }}
     >
@@ -188,7 +193,7 @@ const MyTabs = () => {
           ),
         }}
       />
-      
+
     </Tab.Navigator>
   );
 }
@@ -206,23 +211,22 @@ const HomeStack = ({ navigation }) => {
         options={{
           title: "",
           headerShadowVisible: false,
+          headerStyle: {
+            backgroundColor: "#FFF2C5"
+          },
           headerLeft: () => (
             <MaterialCommunityIcons
               name={'menu'}
               size={20}
+              color="#D56A6A"
               onPress={() => navigation.openDrawer()}
               style={{ marginRight: 20 }}
             />
           ),
-          headerRight: () => (
-            <MaterialCommunityIcons
-              name={'magnify'}
-              size={28}
-            />
-          )
+
         }}
       />
-     
+
     </Stack.Navigator>
   );
 }
@@ -230,3 +234,6 @@ const HomeStack = ({ navigation }) => {
 
 
 export default Navigation;
+
+
+

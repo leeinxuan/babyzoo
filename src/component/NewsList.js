@@ -44,7 +44,12 @@ const styles = StyleSheet.create({
         marginBottom:20,
         width:355,
         height:55,
-        borderRadius:20
+        borderRadius:20,
+        shadowOffset:{width:0,height:4},
+        shadowColor:'black',
+        shadowOpacity:0.4,
+        shadowRadius:4,
+        elevation:4
     },
     newstext:{
         color:'white',

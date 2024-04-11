@@ -11,11 +11,8 @@ const FrontScreen = ({ navigation }) => {
   return (
     <ScrollView style={{ flex: 1, backgroundColor: '#FFF2C5' }}>
       <Center>
-        <Text style={{ fontSize: 36, fontWeight: '900', color: '#B1D9DE',marginBottom:-15}}>
-          BABY
-        </Text>
-        <Text style={{ fontSize: 36, fontWeight: '900', color: '#B1D9DE'}}>
-          ZOO
+        <Text style={{ fontSize: 36, fontWeight: '900', color: '#B1D9DE',textAlign:'center'}}>
+          BABY{'\n'}ZOO
         </Text>
       </Center>
       <Searchbar/>

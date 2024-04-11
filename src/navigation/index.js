@@ -22,6 +22,7 @@ import AccountScreen from '../screens/AccountScreen';
 import SettingtScreen from '../screens/SettingScreen';
 import FrontScreen from '../screens/FrontScreen';
 import MapScreen from '../screens/MapScreen';
+import TicketScreen from '../screens/TicketScreen';
 
 
 const Stack = createNativeStackNavigator();
@@ -111,7 +112,7 @@ const MyDrawer = () => {
   );
 }
 
-const MyTabs = () => {
+const MyTabs = ({ navigation }) => {
   return (
     <Tab.Navigator
       initialRouteName="HomeStack"
@@ -131,7 +132,7 @@ const MyTabs = () => {
         component={HomeStack}
         options={{
           headerShown: false,
-          title: "Home",
+          title: "首頁",
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons name="home" color={color} size={26} />
           ),
@@ -147,7 +148,7 @@ const MyTabs = () => {
             fontSize: 20
           },
           tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons name="book-open" color={color} size={26} />
+            <MaterialCommunityIcons name="map-marker" color={color} size={26} />
           ),
         }}
       />
@@ -161,7 +162,7 @@ const MyTabs = () => {
             fontSize: 20
           },
           tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons name="bookmark" color={color} size={26} />
+            <MaterialCommunityIcons name="information" color={color} size={26} />
           ),
         }}
       />
@@ -175,21 +176,18 @@ const MyTabs = () => {
             fontSize: 20
           },
           tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons name="book-open" color={color} size={26} />
+            <MaterialCommunityIcons name="calendar-text-outline" color={color} size={26} />
           ),
         }}
       />
       <Tab.Screen
-        name="Ticket"
-        component={PlanScreen}
+        name="TicketStack"
+        component={TicketStack}
         options={{
           title: "購票",
-          headerTitleStyle: {
-            fontWeight: '400',
-            fontSize: 20
-          },
+          headerShown: false,        
           tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons name="book-open" color={color} size={26} />
+            <MaterialCommunityIcons name="ticket-confirmation" color={color} size={26} />
           ),
         }}
       />
@@ -219,8 +217,36 @@ const HomeStack = ({ navigation }) => {
               name={'menu'}
               size={20}
               color="#D56A6A"
-              onPress={() => navigation.openDrawer()}
-              style={{ marginRight: 20 }}
+              onPress={() => navigation.openDrawer()}             
+            />
+          ),
+
+        }}
+      />
+
+    </Stack.Navigator>
+  );
+}
+
+const TicketStack = ({ navigation }) => {
+
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Ticket"
+        component={TicketScreen}
+        options={{
+          title: "",
+          headerShadowVisible: false,
+          headerStyle: {
+            backgroundColor: "#FFF2C5"
+          },
+          headerLeft: () => (
+            <MaterialCommunityIcons
+              name={'menu'}
+              size={20}
+              color="#D56A6A"
+              onPress={() => navigation.openDrawer()}             
             />
           ),
 

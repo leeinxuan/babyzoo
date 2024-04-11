@@ -1,6 +1,6 @@
 import React from "react";
 import { ScrollView, View, Text, Image, StyleSheet } from "react-native";
-import { HStack, VStack, Box } from "@gluestack-ui/themed";
+
 
 const NewsList = () => {
     return (

@@ -51,7 +51,7 @@ const TicketScreen = () => {
                     height:70,
                     
                 }}
-                borderRadius={15}
+                borderRadius={25}
                 selectedIndex={selectedIndex}
                 onTabPress={(index) => setSelectedIndex(index)}
             />

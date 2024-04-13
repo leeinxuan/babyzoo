@@ -51,6 +51,7 @@ const TicketTypeSet = () => {
         </Pressable>
       </View>
       <SelectList
+        
         setSelected={(num) => setNum(num)}
         data={data}
         save="value"
@@ -74,7 +75,7 @@ export default TicketTypeSet;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex:1,
     alignItems: 'center'
   },
   tabsContainer: {
@@ -108,15 +109,15 @@ const styles = StyleSheet.create({
     color: '#913030'
   },
   moneycontent: {
-    justifyContent: 'center',
-    alignItems: 'center',
     marginTop: 35,
-    marginBottom: 35
+    marginBottom: 35,
+    position:'absolute',
+    top:135
   },
   moneyfont: {
     fontSize: 24,
     fontWeight: 'bold',
-    color: 'white'
+    color: 'white',
   },
 
 });

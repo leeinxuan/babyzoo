@@ -74,7 +74,7 @@ export default TrainTypeSet;
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
+        flex:1,
         alignItems: 'center'
     },
     tabsContainer: {
@@ -110,7 +110,10 @@ const styles = StyleSheet.create({
     moneycontent: {
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop: 35
+        marginTop: 35,
+        position:'absolute',
+        top:135
+
     },
     moneyfont:{
         fontSize:24,

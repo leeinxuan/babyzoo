@@ -1,40 +1,77 @@
 import React from 'react';
-import { View,StyleSheet,Text } from 'react-native';
-import { SelectList } from 'react-native-dropdown-select-list'
-    
+import { useState, } from 'react';
+import { Calendar } from 'react-native-calendars';
+import { View, StyleSheet, Text, Pressable, Modal } from 'react-native';
+import { HStack } from '@gluestack-ui/themed';
+
+
 
 const AnimalInfoScreen = () => {
-    const [selected, setSelected] = React.useState("");
-  
-  const data = [
-      {key:'1', value:'1'},
-      {key:'2', value:'2'},
-      {key:'3', value:'3'},
-      {key:'4', value:'4'},
-      {key:'5', value:'5'},
-      {key:'6', value:'6'},
-      {key:'7', value:'7'},
-      {key:'8', value:'8'},
-      {key:'9', value:'9'},
-      {key:'10', value:'10'},
-  ]
-    return (
-        <SelectList 
-        setSelected={(val) => setSelected(val)} 
-        data={data} 
-        save="value"
-        placeholder="數量"
-        search={false}
-        boxStyles={{width:140}}
-        dropdownStyles={{width:140}}
-        
-    />
-    );
+  const [openCalendar, setOpenCalendar] = useState(false);
+  const [date, setDate] = useState('');
+
+  return (
+    <View>
+      <Pressable
+
+        onPress={() => setOpenCalendar(!openCalendar)}
+      >
+        <Text>open</Text>
+      </Pressable>
+      <Modal
+        animationType="none"
+        transparent={true}
+        visible={openCalendar}
+
+        onRequestClose={() => {
+          setOpenCalendar(false);
+        }}
+      >
+        <View >
+          <Calendar
+            style={styles.calendar}
+            theme={{
+              backgroundColor: '#ffffff',
+              calendarBackground: '#ffffff',
+              textSectionTitleColor: '#b6c1cd',
+              selectedDayBackgroundColor: '#00adf5',
+              selectedDayTextColor: '#ffffff',
+              todayTextColor: '#00adf5',
+              dayTextColor: '#2d4150',
+              textDisabledColor: '#d9e'
+            }}
+            onDayPress={day => {
+              setDate(day.dateString);
+            }}
+            markedDates={{
+              [date]: { selected: true, disableTouchEvent: true, selectedDotColor: 'orange' }
+            }}
+          />
+          <HStack bgColor='white' w='80%'>
+          <Pressable
+            onPress={() => setOpenCalendar(!openCalendar)}
+          >
+            <Text>close</Text>
+          </Pressable><Pressable
+            onPress={() => setOpenCalendar(!openCalendar)}
+          >
+            <Text>確定
+            </Text>
+          </Pressable>
+          </HStack>
+        </View>
+
+      </Modal>
+    </View>
+  );
 }
 
 export default AnimalInfoScreen;
 
 const styles = StyleSheet.create({
-    
-  });
-  
+  calendar: {
+    width: '80%', // 设置日历的宽度为容器宽度的 80%
+    aspectRatio: 1, // 设置日历的宽高比为 1:1，保持等比例缩放
+  },
+});
+

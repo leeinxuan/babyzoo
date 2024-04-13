@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import SegmentedControlTab from "react-native-segmented-control-tab";
 import { Box, Text, Center, VStack, HStack } from "@gluestack-ui/themed";
-import { View } from "react-native";
 import { StyleSheet } from "react-native";
 import TicketTypeSet from './TicketTypeSet';
 import TrainTypeSet from './TrainTypeSet';
+import BuyButton from './BuyButton';
+import Calendar from './Calendar';
 
 
 export default function OrderTicketContent() {
@@ -13,17 +14,20 @@ export default function OrderTicketContent() {
     const SegmentedContent = () => {
         if (selectedIndex == 1) {
             return (
-                <Center style={styles.orderTrain}>
+                <Box style={styles.orderTrain}>
+                    <Calendar bgc={"#60969D"}/>
                     <TrainTypeSet/>
-                </Center>
+                    <BuyButton bgc={"#60969D"}/>
+                </Box>
 
             )
         } else {
             return (
-                <Center style={styles.orderTicket} >
+                <Box style={styles.orderTicket} >
+                    <Calendar bgc={"#913030"}/>
                     <TicketTypeSet/>
-                    
-                </Center>
+                    <BuyButton bgc={"#913030"}/>
+                </Box>
             )
         }
     }
@@ -83,6 +87,7 @@ const styles = StyleSheet.create({
         borderTopRightRadius: 35,
         borderBottomLeftRadius: 35,
         borderBottomRightRadius: 35,
+        padding:35,
         // shadowOffset:{width:0,height:4},
         // shadowColor:'black',
         // shadowOpacity:0.4,
@@ -96,6 +101,7 @@ const styles = StyleSheet.create({
         borderTopRightRadius: 35,
         borderBottomLeftRadius: 35,
         borderBottomRightRadius: 35,
+        padding:35,
         // shadowOffset:{width:0,height:4},
         // shadowColor:'black',
         // shadowOpacity:0.4,

@@ -26,6 +26,7 @@ import TicketScreen from '../screens/TicketScreen';
 import MybabyScreen from '../screens/MybabyScreen';
 import AboutusScreen from '../screens/AboutusScreen';
 import AnimalListScreen from '../screens/AnimalListScreen';
+import ServerScreen from '../screens/ServerScreen';
 import MyTheme from '../theme';
 
 
@@ -112,17 +113,6 @@ const MyDrawer = () => {
         }}
       />
       <Drawer.Screen
-        name="TicketStack"
-        component={TicketScreen}
-        options={{
-          //headerShown: false,
-          title: "我的門票",
-          drawerIcon: ({ color }) => (
-            <MaterialCommunityIcons name="ticket" color={color} size={26} />
-          ),
-        }}
-      />
-      <Drawer.Screen
         name="MybabyStack"
         component={MybabyScreen}
         options={{
@@ -130,6 +120,17 @@ const MyDrawer = () => {
           title: "我的寶寶",
           drawerIcon: ({ color }) => (
             <MaterialCommunityIcons name="heart" color={color} size={26} />
+          ),
+        }}
+      />
+      <Drawer.Screen
+        name="TicketStack"
+        component={ServerScreen}
+        options={{
+          //headerShown: false,
+          title: "服務設施",
+          drawerIcon: ({ color }) => (
+            <MaterialCommunityIcons name="face-agent" color={color} size={26} />
           ),
         }}
       />
@@ -328,9 +329,13 @@ const AnimalInfoStack = ({ navigation }) => {
               options={{
                 title: null,
                 headerShadowVisible: false,
+                headerStyle: {
+                  backgroundColor: "#FFF2C5"
+                },
                   headerLeft: () => (
                       <MaterialCommunityIcons
                           name={'menu'}
+                          color='#D56A6A'
                           size={20}
                           onPress={() => navigation.openDrawer()}
                           style={{ marginRight: 20 }}
@@ -352,7 +357,7 @@ const AnimalInfoStack = ({ navigation }) => {
                           name={'chevron-left'}
                           color='#D56A6A'
                           size={20}
-                          onPress={() => navigation.goBack()}
+                          onPress={() => navigation.navigate('AnimalInfo')}
                           style={{ marginRight: 20 }}
                       />
                   ),

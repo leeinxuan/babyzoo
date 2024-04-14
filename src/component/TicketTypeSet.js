@@ -89,7 +89,6 @@ const styles = StyleSheet.create({
     // paddingHorizontal: 10,
     // paddingVertical: 5,
     alignItems: 'center',
-    
     width: 82,
     height: 50,
     borderRadius: 15,
@@ -107,7 +106,6 @@ const styles = StyleSheet.create({
   selectedTab: {
     borderWidth: 3,
     borderColor: '#913030',
-    
 
   },
   typefont: {

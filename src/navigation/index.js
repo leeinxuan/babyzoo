@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-import { Box, Image, Text, Pressable } from '@gluestack-ui/themed';
+import { Box, Image, Text, Pressable,View } from '@gluestack-ui/themed';
 import { Platform } from 'react-native';
 import { NavigationContainer, useTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -23,6 +23,9 @@ import SettingtScreen from '../screens/SettingScreen';
 import FrontScreen from '../screens/FrontScreen';
 import MapScreen from '../screens/MapScreen';
 import TicketScreen from '../screens/TicketScreen';
+import MybabyScreen from '../screens/MybabyScreen';
+import AboutusScreen from '../screens/AboutusScreen';
+import AnimalListScreen from '../screens/AnimalListScreen';
 import MyTheme from '../theme';
 
 
@@ -32,44 +35,52 @@ const Drawer = createDrawerNavigator();
 
 const Navigation = () => {
   return (
-    <NavigationContainer theme={MyTheme}>
+    <NavigationContainer >
       <MyDrawer />
     </NavigationContainer>
   );
 }
 
 const CustomDrawerContent = (props) => {
-
   return (
     <DrawerContentScrollView {...props}>
-      <Image
-        height={48}
-        width={48}
-        marginLeft={16}
-        marginTop={40}
-        marginBottom={16}
-        source={require("../img/img_avatar.png")}
-        alt='AccountImage'
-      />
-      <Text fontWeight='500' fontSize={24} marginLeft={16} marginBottom={17}>
-        May
-      </Text>
-      <Box backgroundColor='#EDEDEF' height={1} />
-      <DrawerItemList {...props} />
+       <View style={{ flex: 1 }}>
+        <View style={{ backgroundColor: '#D56A6A', height: 190 ,marginTop:-67}}>
+          <View style={{ flexDirection: 'row', alignItems: 'center', paddingHorizontal: 16, paddingTop: 50 }}>
+            <Image
+              height={55}
+              width={55}
+              borderRadius={40}
+              marginTop={20}
+              source={require("../img/APP.jpg")}
+              alt='AccountImage'
+            />
+            <Text fontWeight='500' fontSize={24} marginLeft={16} marginTop={25} color='white'>
+              Baby Zoo
+            </Text>
+          </View>
+          <Text fontWeight='500' fontSize={16} marginLeft={20} marginTop={25} color='white'>
+            babyzoo1123@gmail.com
+          </Text>
+        </View>
+        <View style={{ backgroundColor: '#B1D9DE', flex: 2 }}>
+          <DrawerItemList {...props} />
+        </View>
+      </View>
     </DrawerContentScrollView>
   );
 }
 
 const MyDrawer = () => {
-
   return (
     <Drawer.Navigator
       initialRouteName="HomeStack"
       screenOptions={{
         drawerStyle: { width: 300 },
-        drawerActiveBackgroundColor: 'white',
-        drawerInactiveTintColor: '#666666',
-        drawerActiveTintColor: '#6200EE',
+        drawerStyle: { backgroundColor: '#B1D9DE' },
+        drawerActiveBackgroundColor: '#B1D9DE',
+        drawerInactiveTintColor: '#ffffff',
+        drawerActiveTintColor: '#D56A6A',
         headerTitleStyle: {
           fontWeight: '400',
           fontSize: 20,
@@ -83,9 +94,9 @@ const MyDrawer = () => {
         component={MyTabs}
         options={{
           headerShown: false,
-          title: "Home",
+          title: "首頁",
           drawerIcon: ({ color }) => (
-            <MaterialCommunityIcons name="home" color={color} size={26} />
+            <MaterialCommunityIcons name="home-variant" color={color} size={26} />
           ),
         }}
       />
@@ -94,9 +105,42 @@ const MyDrawer = () => {
         component={AccountScreen}
         options={{
           //headerShown: false,
-          title: "Account",
+          title: "我的帳號",
           drawerIcon: ({ color }) => (
             <MaterialCommunityIcons name="account-circle" color={color} size={26} />
+          ),
+        }}
+      />
+      <Drawer.Screen
+        name="TicketStack"
+        component={TicketScreen}
+        options={{
+          //headerShown: false,
+          title: "我的門票",
+          drawerIcon: ({ color }) => (
+            <MaterialCommunityIcons name="ticket" color={color} size={26} />
+          ),
+        }}
+      />
+      <Drawer.Screen
+        name="MybabyStack"
+        component={MybabyScreen}
+        options={{
+          //headerShown: false,
+          title: "我的寶寶",
+          drawerIcon: ({ color }) => (
+            <MaterialCommunityIcons name="heart" color={color} size={26} />
+          ),
+        }}
+      />
+      <Drawer.Screen
+        name="AboutusStack"
+        component={AboutusScreen}
+        options={{
+          //headerShown: false,
+          title: "關於我們",
+          drawerIcon: ({ color }) => (
+            <MaterialCommunityIcons name="account-group" color={color} size={26} />
           ),
         }}
       />
@@ -105,7 +149,7 @@ const MyDrawer = () => {
         component={SettingtScreen}
         options={{
           //headerShown: false,
-          title: "Settings",
+          title: "設定",
           drawerIcon: ({ color }) => (
             <MaterialCommunityIcons name="cog" color={color} size={26} />
           ),
@@ -170,9 +214,10 @@ const MyTabs = ({ navigation }) => {
       />
       <Tab.Screen
         name="animalInfo"
-        component={AnimalInfoScreen}
+        component={AnimalInfoStack}
         options={{
           title: "動物介紹",
+          headerShown: false,
           headerTitleStyle: {
             fontWeight: '400',
             fontSize: 20
@@ -201,7 +246,7 @@ const MyTabs = ({ navigation }) => {
         name="TicketStack"
         component={TicketStack}
         options={{
-          title: "購票",
+          title: "門票",
           headerShown: false,
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons name="ticket-confirmation" color={color} size={26} />
@@ -271,6 +316,49 @@ const TicketStack = ({ navigation }) => {
       />
 
     </Stack.Navigator>
+  );
+}
+
+const AnimalInfoStack = ({ navigation }) => {
+  return (
+      <Stack.Navigator>
+          <Stack.Screen
+              name="AnimalInfo"
+              component={AnimalListScreen}
+              options={{
+                title: null,
+                headerShadowVisible: false,
+                  headerLeft: () => (
+                      <MaterialCommunityIcons
+                          name={'menu'}
+                          size={20}
+                          onPress={() => navigation.openDrawer()}
+                          style={{ marginRight: 20 }}
+                      />
+                  ),
+              }}
+          />
+          <Stack.Screen
+              name="AnimalInfo2"
+              component={AnimalInfoScreen}
+              options={{
+                title: null,
+                headerShadowVisible: false,
+                headerStyle: {
+                  backgroundColor: "#B1D9DE"
+                },
+                  headerLeft: () => (
+                      <MaterialCommunityIcons
+                          name={'chevron-left'}
+                          color='#D56A6A'
+                          size={20}
+                          onPress={() => navigation.goBack()}
+                          style={{ marginRight: 20 }}
+                      />
+                  ),
+              }}
+          />
+      </Stack.Navigator>
   );
 }
 

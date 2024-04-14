@@ -30,6 +30,7 @@
       "horizontal": true,
       "data": [
          {  
+            "key":1,
             "babyname":"火箭",
             "image": "https://github.com/leeinxuan/babyzoo/blob/main/src/img/raccoon_newborn.jpg?raw=true",
             "type":"北美浣熊",
@@ -37,6 +38,7 @@
             "hastag2":"#ESTJ"
          },
          {
+            "key":2,
             "babyname":"彼得",
             "image": "https://github.com/leeinxuan/babyzoo/blob/main/src/img/pinkDolphin_newborn.jpg?raw=true",
             "type":"粉色海豚",
@@ -44,7 +46,7 @@
             "hastag2":"#ENSP"
          },
          {
-            "babyname":"雪球",
+            "babyname":"雪寶",
             "image": "https://github.com/leeinxuan/babyzoo/blob/main/src/img/LongTailedBird_newborn.jpg?raw=true",
             "type":"銀猴長尾山雀",
             "hastag1":"#3個月",

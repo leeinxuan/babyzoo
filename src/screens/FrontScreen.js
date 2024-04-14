@@ -3,8 +3,9 @@ import { ScrollView,Text } from "react-native";
 import { Center } from "@gluestack-ui/themed";
 import ActivityList from "../component/ActivityList";
 import NewsList from "../component/NewsList";
-import ServeList from "../component/ServeLIst";
+import Weather from "../component/Weather";
 import Searchbar from "../component/Searchbar";
+import NewbornList from "../component/NewbornList";
 
 
 const FrontScreen = ({ navigation }) => {
@@ -15,9 +16,10 @@ const FrontScreen = ({ navigation }) => {
           BABY{'\n'}ZOO
         </Text>
       </Center>
+      <Weather/>
       <Searchbar/>
-      <ServeList/>
       <ActivityList />
+      <NewbornList/>
       <NewsList />
     </ScrollView>
   );

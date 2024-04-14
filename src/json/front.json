@@ -1,54 +1,74 @@
 [
    {
-      "title": "Activity News",
+      "title": "最新活動",
       "horizontal": false,
       "data": [
          {
             "actname": "水獺洗臉教學",
+            "descriptions":"讓我們一起探索海洋世界中可愛的海獺，並學習它們獨特的洗臉技巧！",
             "image": "https://github.com/leeinxuan/babyzoo/blob/main/src/img/otter_activity.jpg?raw=true"
          },
          {
             "actname": "樹懶寫生比賽",
+            "descriptions":"懶洋洋的魅力：它們以它們緩慢的步伐和可愛的表情而聞名於世，你將有機會在...",
             "image": "https://github.com/leeinxuan/babyzoo/blob/main/src/img/sloth_activity.jpg?raw=true"
          },
          {
             "actname": "尋找獨角獸",
+            "descriptions":"踏上一場奇幻的探險之旅，讓我們一起尋找傳說中的獨角獸！獨角獸被認為是神...",
             "image": "https://github.com/leeinxuan/babyzoo/blob/main/src/img/unicorn_activity.jpg?raw=true"
          },
          {
             "actname": "水豚君橘子秀",
+            "descriptions":"豚君總是在那裡，溫柔地注視著周圍的一切，就像是一個溫暖的微笑讓人感受到...",
             "image": "https://github.com/leeinxuan/babyzoo/blob/main/src/img/capybara_activity.jpg?raw=true"
          }
       ]
    },
    {
-      "title": "Newest",
+      "title": "新生寶寶",
       "horizontal": true,
       "data": [
-         {
-            "bookname": "Yves Saint Laurent",
-            "author": "Suzy Menkes",
-            "showStar":true,
-            "star":4,
-            "image": "https://github.com/leeinxuan/BookStore/blob/master/src/img/img_book_ysl.png?raw=true",
-            "descriptions": "A spectacular visual journey through 40 years of haute couture from one of the best-known and most trend-setting brands in fashion."
+         {  
+            "babyname":"火箭",
+            "image": "'../img/raccoon_newborn.jpg'",
+            "type":"北美浣熊",
+            "hastag1":"#6個月",
+            "hastag2":"#ESTJ"
          },
          {
-            "bookname": "The Book of Signs",
-            "author": "Rudolf Koch",
-            "showStar":true,
-            "star":3,
-            "image": "https://github.com/leeinxuan/BookStore/blob/master/src/img/img_book_tbos.png?raw=true",
-            "descriptions": "A spectacular visual journey through 40 years of haute couture from one of the best-known and most trend-setting brands in fashion."
+            "babyname":"彼得",
+            "image": "https://github.com/leeinxuan/babyzoo/blob/main/src/img/otter_activity.jpg?raw=true",
+            "type":"粉色海豚",
+            "hastag1":"9個月",
+            "hastag2":"#ENSP"
          },
          {
-            "bookname": "Stitched Up",
-            "author": "Tansy E. Hoskins",
-            "showStar":true,
-            "star":3,
-            "image": "https://github.com/leeinxuan/BookStore/blob/master/src/img/img_book_stitchedup.png?raw=true",
-            "descriptions": "A spectacular visual journey through 40 years of haute couture from one of the best-known and most trend-setting brands in fashion."
+            "babyname":"雪球",
+            "image": "https://github.com/leeinxuan/babyzoo/blob/main/src/img/otter_activity.jpg?raw=true",
+            "type":"銀猴長尾山雀",
+            "hastag1":"3個月",
+            "hastag2":"#ISFJ"
+         }
+      ]
+   },
+   {
+      "title": "最新消息",
+      "horizontal": false,
+      "data": [
+         {  
+            "newstype":"公告",
+            "newsdescriptions":"【公告】BABY ZOO 4/16暫停營業"
+         },
+         {
+            "newstype":"停展",
+            "newsdescriptions":"【停展】企鵝餵食秀因食安問題暫停演出"
+         },
+         {
+            "newstype":"人事",
+            "newsdescriptions":"【人事】BABY ZOO 徵求工讀生數名"
          }
       ]
    }
+   
 ]

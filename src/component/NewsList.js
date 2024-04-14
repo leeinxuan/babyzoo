@@ -2,11 +2,12 @@ import React from "react";
 import { ScrollView, View, Text, Image, StyleSheet } from "react-native";
 
 
+
 const NewsList = () => {
     return (
         <View style={styles.activitySection}>
             <View style={styles.textStyle}>
-                <Text style={{ fontSize: 24, fontWeight: 'bold', color: '#B1D9DE', zIndex: 2 }}>最新消息</Text>
+                <Text style={{ fontSize: 24, fontWeight: 'bold', color: '#60969D', zIndex: 2 }}>最新消息</Text>
                 <View style={{ width: 125, height: 16, backgroundColor: 'white', borderRadius: 10, zIndex: 1, top: -12 }}></View>
             </View>
             <View style={styles.newstextsection}>

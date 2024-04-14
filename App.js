@@ -8,12 +8,12 @@ import { config } from '@gluestack-ui/config';
 export default function App() {
   return (
     <SafeAreaProvider>
-      <SafeAreaView style={styles.container}>
+      
         <StatusBar />
         <GluestackUIProvider config={config}>
         <Navigation />
         </GluestackUIProvider>
-      </SafeAreaView>
+      
     </SafeAreaProvider>
   );
 }

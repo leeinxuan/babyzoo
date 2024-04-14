@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, Image, StyleSheet, View, Pressable } from "react-native";
+import { Text, Image, StyleSheet, View, Pressable,Platform } from "react-native";
 
 
 const ActivityDetail = ({ data }) => {
@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
         borderRadius:20,
         shadowOffset:{width:0,height:4},
         shadowColor:'black',
-        shadowOpacity:0.4,
+        shadowOpacity:0.2,
         shadowRadius:4,
         elevation:4
 
@@ -62,7 +62,14 @@ const styles = StyleSheet.create({
         backgroundColor:'#E59B9B',
         borderRadius:6,
         marginTop:4,
-        paddingTop:1
+        ...Platform.select({
+            ios: {
+                paddingTop: 4
+            },
+            android: {
+                paddingTop: 1,
+            },
+        }),
         
     }
 });

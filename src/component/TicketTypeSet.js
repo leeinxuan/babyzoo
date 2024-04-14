@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-import { View, StyleSheet, Text, Pressable, } from 'react-native';
+import { View, StyleSheet, Text, Pressable,Platform } from 'react-native';
 import { SelectList } from 'react-native-dropdown-select-list'
 
 
@@ -76,7 +76,8 @@ export default TicketTypeSet;
 const styles = StyleSheet.create({
   container: {
     flex:1,
-    alignItems: 'center'
+    alignItems: 'center',
+    zIndex:999
   },
   tabsContainer: {
     flexDirection: 'row',
@@ -85,27 +86,53 @@ const styles = StyleSheet.create({
     marginBottom: 35
   },
   tab: {
-    paddingHorizontal: 10,
-    paddingVertical: 5,
+    // paddingHorizontal: 10,
+    // paddingVertical: 5,
     alignItems: 'center',
+    
     width: 82,
     height: 50,
     borderRadius: 15,
     backgroundColor: 'white',
+    ...Platform.select({
+      ios: {
+        justifyContent:'center',
+        
+      },
+      android: {
+          
+      },
+  }),
   },
   selectedTab: {
-    borderBottomWidth: 2,
-    borderColor: 'blue',
     borderWidth: 3,
     borderColor: '#913030',
+    
 
   },
   typefont: {
     fontSize: 20,
     fontWeight: '600',
-    color: '#D56A6A'
+    color: '#D56A6A',
+    ...Platform.select({
+      ios: {
+        justifyContent:'center',
+        
+      },
+      android: {
+          marginTop:8,
+      },
+  }),
   },
   selectedtypefont: {
+    ...Platform.select({
+      ios: {
+        
+      },
+      android: {
+          marginTop:5,
+      },
+  }),
     color: '#913030'
   },
   moneycontent: {

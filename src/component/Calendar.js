@@ -1,7 +1,7 @@
 import React from 'react'
-import { StyleSheet, View } from "react-native";
+import { StyleSheet } from "react-native";
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import { HStack, Text } from "@gluestack-ui/themed";
+import { HStack ,Text} from "@gluestack-ui/themed";
 
 const Calendar = ({ bgc }) => {
     return (
@@ -24,13 +24,16 @@ const Calendar = ({ bgc }) => {
                 fontWeight='bold'
                 color={bgc}
                 ml={5}
+                
+                
             >日期</Text>
         </HStack>
     );
 };
 
-const styles = StyleSheet.create({
 
+const styles = StyleSheet.create({
+    
 })
 
 export default Calendar;

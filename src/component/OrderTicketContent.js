@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import SegmentedControlTab from "react-native-segmented-control-tab";
 import { Box, Text, Center, VStack, HStack } from "@gluestack-ui/themed";
-import { StyleSheet } from "react-native";
+import { Platform, StyleSheet } from "react-native";
 import TicketTypeSet from './TicketTypeSet';
 import TrainTypeSet from './TrainTypeSet';
 import BuyButton from './BuyButton';
@@ -15,18 +15,18 @@ export default function OrderTicketContent() {
         if (selectedIndex == 1) {
             return (
                 <Box style={styles.orderTrain}>
-                    <Calendar bgc={"#60969D"}/>
-                    <TrainTypeSet/>
-                    <BuyButton bgc={"#60969D"}/>
+                    <Calendar bgc={"#60969D"} />
+                    <TrainTypeSet />
+                    <BuyButton bgc={"#60969D"} />
                 </Box>
 
             )
         } else {
             return (
                 <Box style={styles.orderTicket} >
-                    <Calendar bgc={"#913030"}/>
-                    <TicketTypeSet/>
-                    <BuyButton bgc={"#913030"}/>
+                    <Calendar bgc={"#913030"} />
+                    <TicketTypeSet />
+                    <BuyButton bgc={"#913030"} />
                 </Box>
             )
         }
@@ -63,10 +63,10 @@ export default function OrderTicketContent() {
                     borderBottomRightRadius: 0,
                     marginRight: 20
                 }}
-                tabTextStyle={{ fontSize: 24, fontWeight: 'bold', paddingLeft: 5,paddingRight:5, color: "white" }}
+                tabTextStyle={{ fontSize: 24, fontWeight: 'bold', paddingLeft: 5, paddingRight: 5, color: "white" }}
                 tabsContainerStyle={{
                     width: 310,
-                    height:60
+                    height: 60
                 }}
                 selectedIndex={selectedIndex}
                 onTabPress={(index) => setSelectedIndex(index)}
@@ -82,12 +82,21 @@ const styles = StyleSheet.create({
 
     orderTrain: {
         backgroundColor: '#B1D9DE',
-        width: 350,
-        height: 450,
+        ...Platform.select({
+            ios: {
+                width: 350,
+                height: 450,
+            },
+            android: {
+                width: 352,
+                height: 450,
+            },
+        }),
+
         borderTopRightRadius: 35,
         borderBottomLeftRadius: 35,
         borderBottomRightRadius: 35,
-        padding:35,
+        padding: 35,
         // shadowOffset:{width:0,height:4},
         // shadowColor:'black',
         // shadowOpacity:0.4,
@@ -96,12 +105,20 @@ const styles = StyleSheet.create({
     },
     orderTicket: {
         backgroundColor: '#D56A6A',
-        width: 350,
-        height: 450,
+        ...Platform.select({
+            ios: {
+                width: 350,
+                height: 450,
+            },
+            android: {
+                width: 352,
+                height: 450,
+            },
+        }),
         borderTopRightRadius: 35,
         borderBottomLeftRadius: 35,
         borderBottomRightRadius: 35,
-        padding:35,
+        padding: 35,
         // shadowOffset:{width:0,height:4},
         // shadowColor:'black',
         // shadowOpacity:0.4,

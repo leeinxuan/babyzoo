@@ -31,23 +31,23 @@
       "data": [
          {  
             "babyname":"火箭",
-            "image": "'../img/raccoon_newborn.jpg'",
+            "image": "https://github.com/leeinxuan/babyzoo/blob/main/src/img/raccoon_newborn.jpg?raw=true",
             "type":"北美浣熊",
             "hastag1":"#6個月",
             "hastag2":"#ESTJ"
          },
          {
             "babyname":"彼得",
-            "image": "https://github.com/leeinxuan/babyzoo/blob/main/src/img/otter_activity.jpg?raw=true",
+            "image": "https://github.com/leeinxuan/babyzoo/blob/main/src/img/pinkDolphin_newborn.jpg?raw=true",
             "type":"粉色海豚",
-            "hastag1":"9個月",
+            "hastag1":"#9個月",
             "hastag2":"#ENSP"
          },
          {
             "babyname":"雪球",
-            "image": "https://github.com/leeinxuan/babyzoo/blob/main/src/img/otter_activity.jpg?raw=true",
+            "image": "https://github.com/leeinxuan/babyzoo/blob/main/src/img/LongTailedBird_newborn.jpg?raw=true",
             "type":"銀猴長尾山雀",
-            "hastag1":"3個月",
+            "hastag1":"#3個月",
             "hastag2":"#ISFJ"
          }
       ]

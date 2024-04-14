@@ -1,8 +1,8 @@
 import React from 'react';
 import { useState } from 'react';
 import { Box, Image, Text, Pressable } from '@gluestack-ui/themed';
-
-import { NavigationContainer } from '@react-navigation/native';
+import { Platform } from 'react-native';
+import { NavigationContainer, useTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import {
@@ -23,6 +23,7 @@ import SettingtScreen from '../screens/SettingScreen';
 import FrontScreen from '../screens/FrontScreen';
 import MapScreen from '../screens/MapScreen';
 import TicketScreen from '../screens/TicketScreen';
+import MyTheme from '../theme';
 
 
 const Stack = createNativeStackNavigator();
@@ -31,13 +32,14 @@ const Drawer = createDrawerNavigator();
 
 const Navigation = () => {
   return (
-    <NavigationContainer>
+    <NavigationContainer theme={MyTheme}>
       <MyDrawer />
     </NavigationContainer>
   );
 }
 
 const CustomDrawerContent = (props) => {
+
   return (
     <DrawerContentScrollView {...props}>
       <Image
@@ -59,6 +61,7 @@ const CustomDrawerContent = (props) => {
 }
 
 const MyDrawer = () => {
+
   return (
     <Drawer.Navigator
       initialRouteName="HomeStack"
@@ -113,15 +116,27 @@ const MyDrawer = () => {
 }
 
 const MyTabs = ({ navigation }) => {
+  const { colors } = useTheme;
   return (
     <Tab.Navigator
       initialRouteName="HomeStack"
       screenOptions={{
         tabBarActiveTintColor: '#FFF2C5',
-        
+        tabBarInactiveTintColor: 'white',
         tabBarStyle: {
-          height: 70,
+          ...Platform.select({
+            ios: {
+              height: 83,
+            },
+            android: {
+              height: 70,
+              tabBarLabelStyle: {
+                
+              },
+            },
+          }),
           backgroundColor: "#D56A6A",
+          
         },
 
         //headerShown:false
@@ -136,6 +151,7 @@ const MyTabs = ({ navigation }) => {
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons name="home" color={color} size={26} />
           ),
+
         }}
       />
       <Tab.Screen
@@ -164,6 +180,7 @@ const MyTabs = ({ navigation }) => {
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons name="information" color={color} size={26} />
           ),
+
         }}
       />
       <Tab.Screen
@@ -185,7 +202,7 @@ const MyTabs = ({ navigation }) => {
         component={TicketStack}
         options={{
           title: "購票",
-          headerShown: false,        
+          headerShown: false,
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons name="ticket-confirmation" color={color} size={26} />
           ),
@@ -217,7 +234,7 @@ const HomeStack = ({ navigation }) => {
               name={'menu'}
               size={20}
               color="#D56A6A"
-              onPress={() => navigation.openDrawer()}             
+              onPress={() => navigation.openDrawer()}
             />
           ),
 
@@ -246,7 +263,7 @@ const TicketStack = ({ navigation }) => {
               name={'menu'}
               size={20}
               color="#D56A6A"
-              onPress={() => navigation.openDrawer()}             
+              onPress={() => navigation.openDrawer()}
             />
           ),
 

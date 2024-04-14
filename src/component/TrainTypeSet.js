@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-import { View, StyleSheet, Text, Pressable, } from 'react-native';
+import { View, StyleSheet, Text, Pressable,Platform } from 'react-native';
 import { SelectList } from 'react-native-dropdown-select-list'
 
 const TrainTypeSet = () => {
@@ -75,7 +75,8 @@ export default TrainTypeSet;
 const styles = StyleSheet.create({
     container: {
         flex:1,
-        alignItems: 'center'
+        alignItems: 'center',
+        zIndex:999
     },
     tabsContainer: {
         flexDirection: 'row',
@@ -84,16 +85,24 @@ const styles = StyleSheet.create({
         marginBottom: 35
     },
     tab: {
-        paddingHorizontal: 10,
-        paddingVertical: 5,
+        // paddingHorizontal: 10,
+        // paddingVertical: 5,
         alignItems: 'center',
         width: 82,
         height: 50,
         borderRadius: 15,
         backgroundColor: 'white',
+        ...Platform.select({
+            ios: {
+              justifyContent:'center',
+              
+            },
+            android: {
+                
+            },
+        }),
     },
     selectedTab: {
-        borderBottomWidth: 2,
         borderColor: 'blue',
         borderWidth: 3,
         borderColor: '#60969D',
@@ -102,10 +111,27 @@ const styles = StyleSheet.create({
     typefont: {
         fontSize: 20,
         fontWeight: '600',
-        color: '#B1D9DE'
+        color: '#B1D9DE',
+        ...Platform.select({
+            ios: {
+              justifyContent:'center',
+              
+            },
+            android: {
+                marginTop:8,
+            },
+        }),
     },
     selectedtypefont: {
-        color: '#60969D'
+        color: '#60969D',
+        ...Platform.select({
+            ios: {
+              
+            },
+            android: {
+                marginTop:5,
+            },
+        }),
     },
     moneycontent: {
         justifyContent: 'center',

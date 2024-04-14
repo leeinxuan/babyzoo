@@ -28,15 +28,17 @@ const TicketScreen = () => {
     }
 
     return (
-        <ScrollView style={{ flex: 1, backgroundColor: '#FFF2C5' }} >
+        <ScrollView
+            showsVerticalScrollIndicator={false}
+            style={{ flex: 1, backgroundColor: '#FFF2C5' }} >
             <SegmentedControlTab
                 values={["我的門票", "我要買票"]}
                 tabStyle={{
                     backgroundColor: "#FFF2C5",
                     marginTop: 10,
                     borderColor: "white",
-                    borderWidth:3,
-                    
+                    borderWidth: 3,
+
                 }}
                 activeTabStyle={{
                     backgroundColor: "#B1D9DE",
@@ -45,11 +47,11 @@ const TicketScreen = () => {
                 }}
                 firstTabStyle={{ marginLeft: 20 }}
                 lastTabStyle={{ marginRight: 20 }}
-                tabTextStyle={{ fontSize: 24,  color: "#B1D9DE",fontWeight:'bold' }}
+                tabTextStyle={{ fontSize: 24, color: "#B1D9DE", fontWeight: 'bold' }}
                 activeTabTextStyle={{ color: "white" }}
                 tabsContainerStyle={{
-                    height:70,
-                    
+                    height: 70,
+
                 }}
                 borderRadius={25}
                 selectedIndex={selectedIndex}

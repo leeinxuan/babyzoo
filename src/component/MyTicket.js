@@ -6,6 +6,9 @@ import { Box, Text, Center } from "@gluestack-ui/themed";
 export default function MyTicket() {
 
    return (
-      <Text>MY TICKET</Text>
+      <Center mt={100}>
+         <Text fontSize={24} color='#B1D9DE'>您尚未購票</Text>
+      </Center>
+      
    );
 }

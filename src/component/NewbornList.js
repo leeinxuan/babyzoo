@@ -13,6 +13,7 @@ const NewbornList = () => {
                 <View style={{ width: 125, height: 16, backgroundColor: 'white', borderRadius: 10, zIndex: 1, top: -12 }}></View>
             </View>
             <FlatList
+                showsHorizontalScrollIndicator={false}
                 horizontal={true}
                 data={data[1].data}
                 renderItem={({ item }) => <NewbornDetail data={item} />}
@@ -27,37 +28,17 @@ export default NewbornList;
 
 const styles = StyleSheet.create({
     activitySection: {
-       marginLeft:20,
-       marginBottom:55,
-       marginTop:45,
-        height:320
+        marginLeft: 20,
+        marginBottom: 55,
+        height: 255
     },
     textStyle: {
         alignItems: 'center',
         marginBottom: 10,
-        marginRight:20
+        marginRight: 20
     },
-    imgArrange: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-
-    },
-    activitImg: {
-        width: 169,
-        height: 188,
-        borderRadius: 35,
-        zIndex: 1,
 
 
-    },
-    textsection: {
-        position: 'relative',
-        zIndex: 2,
-        top: -35,
-        alignItems: 'flex-end',
-        marginRight: 20,
-
-    }
 
 
 })

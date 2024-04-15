@@ -1,12 +1,31 @@
 import React from "react";
 import { Text, Image, StyleSheet, View, Pressable, Platform } from "react-native";
+import { useSelector } from "react-redux";
+import { selectColorMode } from "../redux/counterSlice";
+import { useTheme } from '@react-navigation/native';
 
 
 const ActivityDetail = ({ data }) => {
-
+    const { colors } = useTheme();
+    const colorMode = useSelector(selectColorMode);
     return (
 
-        <View style={styles.activityContent}>
+        <View style={{
+            marginRight: 16,
+            backgroundColor:colorMode == "light"?colors.white:colors.darkbgc,
+            width: 180,
+            height: 250,
+            padding: 16,
+            borderWidth:colorMode == "light"?null:1,
+            borderColor:colorMode == "light"?null:colors.white,
+            borderRadius: 20,
+            shadowOffset: { width: 0, height: 4 },
+            shadowColor: 'black',
+            shadowOpacity: 0.2,
+            shadowRadius: 4,
+            elevation: 4
+
+        }}>
             <Image
                 style={styles.imageStyle}
                 source={{ uri: data.image }}
@@ -36,7 +55,7 @@ const ActivityDetail = ({ data }) => {
 const styles = StyleSheet.create({
     activityContent: {
         flexDirection: 'column',
-        backgroundColor: 'white',
+
         marginRight: 16,
         width: 180,
         height: 250,

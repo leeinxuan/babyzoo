@@ -5,9 +5,13 @@ import OrderTicketContent from '../component/OrderTicketContent';
 import MyTicket from '../component/MyTicket';
 import SegmentedControlTab from "react-native-segmented-control-tab";
 import Attention from '../component/Attention';
+import { useSelector } from "react-redux";
+import { selectColorMode } from "../redux/counterSlice";
+import { useTheme } from '@react-navigation/native';
 
 const TicketScreen = () => {
-
+    const { colors } = useTheme();
+    const colorMode = useSelector(selectColorMode);
     const [selectedIndex, setSelectedIndex] = useState(0);
 
     const SegmentedContent = () => {
@@ -30,11 +34,11 @@ const TicketScreen = () => {
     return (
         <ScrollView
             showsVerticalScrollIndicator={false}
-            style={{ flex: 1, backgroundColor: '#FFF2C5' }} >
+            style={{ flex: 1, backgroundColor: colorMode == "light"?colors.yellow:colors.darkbgc }} >
             <SegmentedControlTab
                 values={["我的門票", "我要買票"]}
                 tabStyle={{
-                    backgroundColor: "#FFF2C5",
+                    backgroundColor: colorMode == "light"?colors.yellow:colors.darkbgc,
                     marginTop: 10,
                     borderColor: "white",
                     borderWidth: 3,

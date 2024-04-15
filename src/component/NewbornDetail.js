@@ -1,12 +1,31 @@
 import React from "react";
 import { Platform, Text, Image, StyleSheet, View, Pressable } from "react-native";
 import { VStack, HStack } from "@gluestack-ui/themed";
+import { useSelector } from "react-redux";
+import { selectColorMode } from "../redux/counterSlice";
+import { useTheme } from '@react-navigation/native';
 
 const NewbornDetail = ({ data }) => {
-
+    const { colors } = useTheme();
+    const colorMode = useSelector(selectColorMode);
     return (
 
-        <View style={styles.newbornContent}>
+        <View style={{
+            flexDirection: 'row',
+            backgroundColor: colorMode == "light" ? colors.white : colors.darkbgc,
+            marginRight: 25,
+            width: 315,
+            height: 186,
+            padding: 24,
+            borderWidth: colorMode == "light" ? null : 1,
+            borderColor: colorMode == "light" ? null : colors.white,
+            borderRadius: 20,
+            shadowOffset: { width: 0, height: 4 },
+            shadowColor: 'black',
+            shadowOpacity: 0.2,
+            shadowRadius: 4,
+            elevation: 4
+        }}>
             <VStack mr={8} pl={5} mt={4}>
                 <Text
                     style={{ fontSize: 24, fontWeight: '600', color: '#60969D', marginBottom: -5 }}>
@@ -86,7 +105,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         marginBottom: 14,
         marginRight: 6,
-        
+
 
 
     },
@@ -99,7 +118,7 @@ const styles = StyleSheet.create({
                 width: 55,
                 height: 25,
                 paddingTop: 5,
-        
+
             },
             android: {
                 width: 51,

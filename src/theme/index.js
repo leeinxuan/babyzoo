@@ -10,8 +10,8 @@ const MyTheme = {
     blue:'#B1D9DE',
     deepblue:'#60969D',
     white:'white',
-    light400: '#a8a29e',
-    primary700: '#0e7490',
+    black:'black',
+    darkbgc:'#2C3A46'
   },
 };
 

@@ -29,6 +29,9 @@ import AnimalListScreen from '../screens/AnimalListScreen';
 import ServerScreen from '../screens/ServerScreen';
 import MyTheme from '../theme';
 
+import { useSelector } from "react-redux";
+import { selectColorMode } from "../redux/counterSlice";
+
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -44,6 +47,7 @@ const Navigation = () => {
 
 const CustomDrawerContent = (props) => {
   const { colors } = useTheme();
+  const colorMode = useSelector(selectColorMode);
   return (
     <DrawerContentScrollView {...props}>
        <View style={{ flex: 1 }}>
@@ -65,7 +69,7 @@ const CustomDrawerContent = (props) => {
             babyzoo1123@gmail.com
           </Text>
         </View>
-        <View style={{ backgroundColor: colors.blue, flex: 2 }}>
+        <View style={{ backgroundColor: colorMode == "light"?colors.blue:colors.darkbgc, flex: 2 }}>
           <DrawerItemList {...props} />
         </View>
       </View>
@@ -75,13 +79,14 @@ const CustomDrawerContent = (props) => {
 
 const MyDrawer = () => {
   const { colors } = useTheme();
+  const colorMode = useSelector(selectColorMode);
   return (
     <Drawer.Navigator
       initialRouteName="HomeStack"
       screenOptions={{
         drawerStyle: { width: 300 },
-        drawerStyle: { backgroundColor: colors.blue },
-        drawerActiveBackgroundColor: colors.blue,
+        drawerStyle: { backgroundColor: colorMode == "light"?colors.blue:colors.darkbgc },
+        drawerActiveBackgroundColor: colorMode == "light"?colors.blue:colors.darkbgc,
         drawerInactiveTintColor: colors.white,
         drawerActiveTintColor: colors.red,
         headerTitleStyle: {
@@ -150,9 +155,9 @@ const MyDrawer = () => {
       />
       <Drawer.Screen
         name="SettingsStack"
-        component={SettingtScreen}
+        component={SettingtStack}
         options={{
-          //headerShown: false,
+          headerShown: false,
           title: "設定",
           drawerIcon: ({ color }) => (
             <MaterialCommunityIcons name="cog" color={color} size={32} />
@@ -264,6 +269,7 @@ const MyTabs = ({ navigation }) => {
 
 const HomeStack = ({ navigation }) => {
   const { colors } = useTheme();
+  const colorMode = useSelector(selectColorMode);
   return (
     <Stack.Navigator>
       <Stack.Screen
@@ -273,7 +279,7 @@ const HomeStack = ({ navigation }) => {
           title: "",
           headerShadowVisible: false,
           headerStyle: {
-            backgroundColor: colors.yellow
+            backgroundColor: colorMode == "light"?colors.yellow:colors.darkbgc 
           },
           headerLeft: () => (
             <MaterialCommunityIcons
@@ -293,6 +299,7 @@ const HomeStack = ({ navigation }) => {
 
 const TicketStack = ({ navigation }) => {
   const { colors } = useTheme();
+  const colorMode = useSelector(selectColorMode);
   return (
     <Stack.Navigator>
       <Stack.Screen
@@ -302,7 +309,7 @@ const TicketStack = ({ navigation }) => {
           title: "",
           headerShadowVisible: false,
           headerStyle: {
-            backgroundColor: colors.yellow
+            backgroundColor: colorMode == "light"?colors.yellow:colors.darkbgc
           },
           headerLeft: () => (
             <MaterialCommunityIcons
@@ -322,6 +329,7 @@ const TicketStack = ({ navigation }) => {
 
 const AnimalInfoStack = ({ navigation }) => {
   const { colors } = useTheme();
+  const colorMode = useSelector(selectColorMode);
   return (
       <Stack.Navigator>
           <Stack.Screen
@@ -331,7 +339,7 @@ const AnimalInfoStack = ({ navigation }) => {
                 title: null,
                 headerShadowVisible: false,
                 headerStyle: {
-                  backgroundColor: colors.yellow
+                  backgroundColor: colorMode == "light"?colors.yellow:colors.darkbgc
                 },
                   headerLeft: () => (
                       <MaterialCommunityIcons
@@ -365,6 +373,36 @@ const AnimalInfoStack = ({ navigation }) => {
               }}
           />
       </Stack.Navigator>
+  );
+}
+
+const SettingtStack = ({ navigation }) => {
+  const { colors } = useTheme();
+  const colorMode = useSelector(selectColorMode);
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Setting"
+        component={SettingtScreen}
+        options={{
+          title: "",
+          headerShadowVisible: false,
+          headerStyle: {
+            backgroundColor: colorMode == "light"?colors.yellow:colors.darkbgc
+          },
+          headerLeft: () => (
+            <MaterialCommunityIcons
+              name={'menu'}
+              size={20}
+              color="#D56A6A"
+              onPress={() => navigation.openDrawer()}
+            />
+          ),
+
+        }}
+      />
+
+    </Stack.Navigator>
   );
 }
 

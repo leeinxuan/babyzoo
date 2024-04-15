@@ -1,14 +1,18 @@
 import React from "react";
 import { Text, StyleSheet,View } from "react-native";
 import { Center } from "@gluestack-ui/themed";
+import { useSelector } from "react-redux";
+import { selectColorMode } from "../redux/counterSlice";
+import { useTheme } from '@react-navigation/native';
 
 const Attention = () => {
-
+    const { colors } = useTheme();
+    const colorMode = useSelector(selectColorMode);
     return (
         <Center p={35}>
             <View style={styles.textStyle}>
-                <Text style={{ fontSize: 24, fontWeight: 'bold', color: '#60969D', zIndex: 2 }}>注意事項</Text>
-                <View style={{ width: 125, height: 16, backgroundColor: 'white', borderRadius: 10, zIndex: 1, top: -12 }}></View>
+                <Text style={{ fontSize: 24, fontWeight: 'bold', color: colorMode == "light" ? colors.deepblue : colors.white, zIndex: 2 }}>注意事項</Text>
+                <View style={{ width: 125, height: 16, backgroundColor: colorMode == "light" ? colors.white : colors.deepblue, borderRadius: 10, zIndex: 1, top: -12 }}></View>
             </View>
             <View>
                 <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#D56A6A' ,lineHeight:25 ,letterSpacing:0.5}}>

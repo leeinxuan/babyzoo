@@ -1,10 +1,12 @@
 import React from "react";
-import { ScrollView, View, Text, Image, StyleSheet,Platform } from "react-native";
+import { ScrollView, View, Text, Image, StyleSheet, Platform } from "react-native";
 import { HStack, VStack, Pressable } from "@gluestack-ui/themed";
 import { useNavigation } from "@react-navigation/native";
 
-const AnimalList = ({book}) => {
-const { navigate } = useNavigation();
+
+
+const AnimalList = ({ book }) => {
+    
     return (
         <View style={styles.activitySection}>
             <View style={styles.actImgSection}>

@@ -13,7 +13,18 @@ import {
 
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-
+import Fox from '../AnimalScreens/FoxScreen';
+import Human from '../AnimalScreens/HumanScreen';
+import Mink from '../AnimalScreens/MinkScreen';
+import Capybara from '../AnimalScreens/CapybaraScreen';
+import Unicorn from '../AnimalScreens/UnicornScreen';
+import Otter from '../AnimalScreens/OtterScreen';
+import Raccoon from '../AnimalScreens/RaccoonScreen';
+import Otterr from '../AnimalScreens/OtterrScreen';
+import Sloth from '../AnimalScreens/SlothScreen';
+import Sheep from '../AnimalScreens/SheepScreen';
+import Bear from '../AnimalScreens/BearScreen';
+import Penguin from '../AnimalScreens/PenguinScreen';
 
 
 import AnimalInfoScreen from '../screens/AnimalInfoScreen';
@@ -352,14 +363,234 @@ const AnimalInfoStack = ({ navigation }) => {
                   ),
               }}
           />
-          <Stack.Screen
-              name="AnimalInfo2"
-              component={AnimalInfoScreen}
+           <Stack.Screen
+              name="AnimalInfo3"
+              component={Bear}
               options={{
                 title: null,
                 headerShadowVisible: false,
                 headerStyle: {
-                  backgroundColor: colors.blue
+                  backgroundColor: "#B1D9DE"
+                },
+                  headerLeft: () => (
+                      <MaterialCommunityIcons
+                          name={'chevron-left'}
+                          color='#D56A6A'
+                          size={20}
+                          onPress={() => navigation.navigate('AnimalInfo')}
+                          style={{ marginRight: 20 }}
+                      />
+                  ),
+              }}
+          />
+          <Stack.Screen
+              name="AnimalInfo4"
+              component={Sheep}
+              options={{
+                title: null,
+                headerShadowVisible: false,
+                headerStyle: {
+                  backgroundColor: "#B1D9DE"
+                },
+                  headerLeft: () => (
+                      <MaterialCommunityIcons
+                          name={'chevron-left'}
+                          color='#D56A6A'
+                          size={20}
+                          onPress={() => navigation.navigate('AnimalInfo')}
+                          style={{ marginRight: 20 }}
+                      />
+                  ),
+              }}
+          />
+          <Stack.Screen
+              name="AnimalInfo5"
+              component={Sloth}
+              options={{
+                title: null,
+                headerShadowVisible: false,
+                headerStyle: {
+                  backgroundColor: "#B1D9DE"
+                },
+                  headerLeft: () => (
+                      <MaterialCommunityIcons
+                          name={'chevron-left'}
+                          color='#D56A6A'
+                          size={20}
+                          onPress={() => navigation.navigate('AnimalInfo')}
+                          style={{ marginRight: 20 }}
+                      />
+                  ),
+              }}
+          />
+          <Stack.Screen
+          name="AnimalInfo6"
+          component={Otterr}
+          options={{
+            title: null,
+            headerShadowVisible: false,
+            headerStyle: {
+              backgroundColor: "#B1D9DE"
+            },
+              headerLeft: () => (
+                  <MaterialCommunityIcons
+                      name={'chevron-left'}
+                      color='#D56A6A'
+                      size={20}
+                      onPress={() => navigation.navigate('AnimalInfo')}
+                      style={{ marginRight: 20 }}
+                  />
+              ),
+          }}
+      />
+      <Stack.Screen
+          name="AnimalInfo7"
+          component={Raccoon}
+          options={{
+            title: null,
+            headerShadowVisible: false,
+            headerStyle: {
+              backgroundColor: "#B1D9DE"
+            },
+              headerLeft: () => (
+                  <MaterialCommunityIcons
+                      name={'chevron-left'}
+                      color='#D56A6A'
+                      size={20}
+                      onPress={() => navigation.navigate('AnimalInfo')}
+                      style={{ marginRight: 20 }}
+                  />
+              ),
+          }}
+      />
+      <Stack.Screen
+          name="AnimalInfo8"
+          component={Otter}
+          options={{
+            title: null,
+            headerShadowVisible: false,
+            headerStyle: {
+              backgroundColor: "#B1D9DE"
+            },
+              headerLeft: () => (
+                  <MaterialCommunityIcons
+                      name={'chevron-left'}
+                      color='#D56A6A'
+                      size={20}
+                      onPress={() => navigation.navigate('AnimalInfo')}
+                      style={{ marginRight: 20 }}
+                  />
+              ),
+          }}
+      />
+      <Stack.Screen
+          name="AnimalInfo9"
+          component={Unicorn}
+          options={{
+            title: null,
+            headerShadowVisible: false,
+            headerStyle: {
+              backgroundColor: "#B1D9DE"
+            },
+              headerLeft: () => (
+                  <MaterialCommunityIcons
+                      name={'chevron-left'}
+                      color='#D56A6A'
+                      size={20}
+                      onPress={() => navigation.navigate('AnimalInfo')}
+                      style={{ marginRight: 20 }}
+                  />
+              ),
+          }}
+      />
+      <Stack.Screen
+          name="AnimalInfo10"
+          component={Capybara}
+          options={{
+            title: null,
+            headerShadowVisible: false,
+            headerStyle: {
+              backgroundColor: "#B1D9DE"
+            },
+              headerLeft: () => (
+                  <MaterialCommunityIcons
+                      name={'chevron-left'}
+                      color='#D56A6A'
+                      size={20}
+                      onPress={() => navigation.navigate('AnimalInfo')}
+                      style={{ marginRight: 20 }}
+                  />
+              ),
+          }}
+      />
+      <Stack.Screen
+          name="AnimalInfo11"
+          component={Mink}
+          options={{
+            title: null,
+            headerShadowVisible: false,
+            headerStyle: {
+              backgroundColor: "#B1D9DE"
+            },
+              headerLeft: () => (
+                  <MaterialCommunityIcons
+                      name={'chevron-left'}
+                      color='#D56A6A'
+                      size={20}
+                      onPress={() => navigation.navigate('AnimalInfo')}
+                      style={{ marginRight: 20 }}
+                  />
+              ),
+          }}
+      />
+      <Stack.Screen
+          name="AnimalInfo12"
+          component={Human}
+          options={{
+            title: null,
+            headerShadowVisible: false,
+            headerStyle: {
+              backgroundColor: "#B1D9DE"
+            },
+              headerLeft: () => (
+                  <MaterialCommunityIcons
+                      name={'chevron-left'}
+                      color='#D56A6A'
+                      size={20}
+                      onPress={() => navigation.navigate('AnimalInfo')}
+                      style={{ marginRight: 20 }}
+                  />
+              ),
+          }}
+      />
+      <Stack.Screen
+          name="AnimalInfo13"
+          component={Fox}
+          options={{
+            title: null,
+            headerShadowVisible: false,
+            headerStyle: {
+              backgroundColor: "#B1D9DE"
+            },
+              headerLeft: () => (
+                  <MaterialCommunityIcons
+                      name={'chevron-left'}
+                      color='#D56A6A'
+                      size={20}
+                      onPress={() => navigation.navigate('AnimalInfo')}
+                      style={{ marginRight: 20 }}
+                  />
+              ),
+          }}
+      />
+          <Stack.Screen
+              name="AnimalInfo2"
+              component={Penguin}
+              options={{
+                title: null,
+                headerShadowVisible: false,
+                headerStyle: {
+                  backgroundColor: "#B1D9DE"
                 },
                   headerLeft: () => (
                       <MaterialCommunityIcons
@@ -374,6 +605,7 @@ const AnimalInfoStack = ({ navigation }) => {
           />
       </Stack.Navigator>
   );
+      
 }
 
 const SettingtStack = ({ navigation }) => {

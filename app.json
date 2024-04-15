@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "babyzoo",
-    "slug": "babyzoo",
+    "name": "mid_9_babyzoo",
+    "slug": "mid_9_babyzoo",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -27,6 +27,11 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "28758c12-2655-44f0-92b9-d34fe9992d5f"
+      }
     }
   }
 }

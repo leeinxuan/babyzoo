@@ -57,6 +57,7 @@ const TicketTypeSet = () => {
         data={data}
         save="value"
         placeholder="1"
+        inputStyles={{color: colors.deepred}}
         search={false}
         boxStyles={{ width: 140, backgroundColor: colors.white, borderColor: colors.deepred, borderWidth: 3, borderRadius: 15 }}
         dropdownStyles={{ width: 140, backgroundColor: colors.white, borderColor: colors.deepred, borderWidth: 3, borderRadius: 15 }}

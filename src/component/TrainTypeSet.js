@@ -56,6 +56,7 @@ const TrainTypeSet = () => {
                 data={data}
                 save="value"
                 placeholder="1"
+                inputStyles={{color: colors.deepblue}}
                 search={false}
                 boxStyles={{ width: 140, backgroundColor: colors.white, borderColor: colors.deepblue, borderWidth: 3, borderRadius: 15 }}
                 dropdownStyles={{ width: 140, backgroundColor: colors.white, borderColor: colors.deepblue, borderWidth: 3, borderRadius: 15 }}

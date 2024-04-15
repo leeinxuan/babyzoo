@@ -5,15 +5,17 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { GluestackUIProvider } from '@gluestack-ui/themed';
 import { config } from '@gluestack-ui/config';
 
+
 export default function App() {
   return (
     <SafeAreaProvider>
       
         <StatusBar />
+        
         <GluestackUIProvider config={config}>
         <Navigation />
         </GluestackUIProvider>
-      
+        
     </SafeAreaProvider>
   );
 }
@@ -21,6 +23,6 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-
+    fontFamily:''
   },
 });

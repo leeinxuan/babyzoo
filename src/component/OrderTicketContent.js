@@ -2,31 +2,34 @@ import React, { useState } from 'react';
 import SegmentedControlTab from "react-native-segmented-control-tab";
 import { Box, Text, Center, VStack, HStack } from "@gluestack-ui/themed";
 import { Platform, StyleSheet } from "react-native";
+import { useTheme } from '@react-navigation/native';
 import TicketTypeSet from './TicketTypeSet';
 import TrainTypeSet from './TrainTypeSet';
 import BuyButton from './BuyButton';
 import Calendar from './Calendar';
 
 
+
 export default function OrderTicketContent() {
+    const { colors } = useTheme();
     const [selectedIndex, setSelectedIndex] = useState(0);
 
     const SegmentedContent = () => {
         if (selectedIndex == 1) {
             return (
                 <Box style={styles.orderTrain}>
-                    <Calendar bgc={"#60969D"} />
+                    <Calendar bgc={colors.deepblue} />
                     <TrainTypeSet />
-                    <BuyButton bgc={"#60969D"} />
+                    <BuyButton bgc={colors.deepblue} />
                 </Box>
 
             )
         } else {
             return (
                 <Box style={styles.orderTicket} >
-                    <Calendar bgc={"#913030"} />
+                    <Calendar bgc={colors.deepred} />
                     <TicketTypeSet />
-                    <BuyButton bgc={"#913030"} />
+                    <BuyButton bgc={colors.deepred} />
                 </Box>
             )
         }
@@ -48,16 +51,16 @@ export default function OrderTicketContent() {
                 }}
 
                 firstTabStyle={{
-                    backgroundColor: "#D56A6A",
-                    borderColor: "#D56A6A",
+                    backgroundColor: colors.red,
+                    borderColor: colors.red,
                     borderTopLeftRadius: 30,
                     borderTopRightRadius: 30,
                     borderBottomLeftRadius: 0,
                     marginLeft: 20
                 }}
                 lastTabStyle={{
-                    backgroundColor: "#B1D9DE",
-                    borderColor: "#B1D9DE",
+                    backgroundColor: colors.blue,
+                    borderColor: colors.blue,
                     borderTopLeftRadius: 30,
                     borderTopRightRadius: 30,
                     borderBottomRightRadius: 0,

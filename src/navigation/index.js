@@ -36,18 +36,19 @@ const Drawer = createDrawerNavigator();
 
 const Navigation = () => {
   return (
-    <NavigationContainer >
+    <NavigationContainer  theme={MyTheme}>
       <MyDrawer />
     </NavigationContainer>
   );
 }
 
 const CustomDrawerContent = (props) => {
+  const { colors } = useTheme();
   return (
     <DrawerContentScrollView {...props}>
        <View style={{ flex: 1 }}>
-        <View style={{ backgroundColor: '#D56A6A', height: 190 ,marginTop:-67}}>
-          <View style={{ flexDirection: 'row', alignItems: 'center', paddingHorizontal: 16, paddingTop: 50 }}>
+        <View style={{ backgroundColor: colors.red, height: 250 ,marginTop:-67}}>
+          <View style={{ flexDirection: 'row', alignItems: 'center', paddingHorizontal: 16, paddingTop: 100 }}>
             <Image
               height={55}
               width={55}
@@ -56,15 +57,15 @@ const CustomDrawerContent = (props) => {
               source={require("../img/APP.jpg")}
               alt='AccountImage'
             />
-            <Text fontWeight='500' fontSize={24} marginLeft={16} marginTop={25} color='white'>
+            <Text fontWeight='500' fontSize={24} marginLeft={16} marginTop={25} color={colors.white}>
               Baby Zoo
             </Text>
           </View>
-          <Text fontWeight='500' fontSize={16} marginLeft={20} marginTop={25} color='white'>
+          <Text fontWeight='500' fontSize={16} marginLeft={20} marginTop={25} color={colors.white}>
             babyzoo1123@gmail.com
           </Text>
         </View>
-        <View style={{ backgroundColor: '#B1D9DE', flex: 2 }}>
+        <View style={{ backgroundColor: colors.blue, flex: 2 }}>
           <DrawerItemList {...props} />
         </View>
       </View>
@@ -73,20 +74,21 @@ const CustomDrawerContent = (props) => {
 }
 
 const MyDrawer = () => {
+  const { colors } = useTheme();
   return (
     <Drawer.Navigator
       initialRouteName="HomeStack"
       screenOptions={{
         drawerStyle: { width: 300 },
-        drawerStyle: { backgroundColor: '#B1D9DE' },
-        drawerActiveBackgroundColor: '#B1D9DE',
-        drawerInactiveTintColor: '#ffffff',
-        drawerActiveTintColor: '#D56A6A',
+        drawerStyle: { backgroundColor: colors.blue },
+        drawerActiveBackgroundColor: colors.blue,
+        drawerInactiveTintColor: colors.white,
+        drawerActiveTintColor: colors.red,
         headerTitleStyle: {
           fontWeight: '400',
           fontSize: 20,
         },
-        drawerLabelStyle: { fontSize: 14, fontWeight: '400' },
+        drawerLabelStyle: { fontSize: 16, fontWeight: '600' },
       }}
       drawerContent={props => <CustomDrawerContent {...props} />}
     >
@@ -97,7 +99,7 @@ const MyDrawer = () => {
           headerShown: false,
           title: "首頁",
           drawerIcon: ({ color }) => (
-            <MaterialCommunityIcons name="home-variant" color={color} size={26} />
+            <MaterialCommunityIcons name="home-variant" color={color} size={32} />
           ),
         }}
       />
@@ -108,7 +110,7 @@ const MyDrawer = () => {
           //headerShown: false,
           title: "我的帳號",
           drawerIcon: ({ color }) => (
-            <MaterialCommunityIcons name="account-circle" color={color} size={26} />
+            <MaterialCommunityIcons name="account-circle" color={color} size={32} />
           ),
         }}
       />
@@ -118,8 +120,9 @@ const MyDrawer = () => {
         options={{
           //headerShown: false,
           title: "我的寶寶",
+          
           drawerIcon: ({ color }) => (
-            <MaterialCommunityIcons name="heart" color={color} size={26} />
+            <MaterialCommunityIcons name="heart" color={color} size={32} />
           ),
         }}
       />
@@ -130,7 +133,7 @@ const MyDrawer = () => {
           //headerShown: false,
           title: "服務設施",
           drawerIcon: ({ color }) => (
-            <MaterialCommunityIcons name="face-agent" color={color} size={26} />
+            <MaterialCommunityIcons name="face-agent" color={color} size={32} />
           ),
         }}
       />
@@ -141,7 +144,7 @@ const MyDrawer = () => {
           //headerShown: false,
           title: "關於我們",
           drawerIcon: ({ color }) => (
-            <MaterialCommunityIcons name="account-group" color={color} size={26} />
+            <MaterialCommunityIcons name="account-group" color={color} size={32} />
           ),
         }}
       />
@@ -152,7 +155,7 @@ const MyDrawer = () => {
           //headerShown: false,
           title: "設定",
           drawerIcon: ({ color }) => (
-            <MaterialCommunityIcons name="cog" color={color} size={26} />
+            <MaterialCommunityIcons name="cog" color={color} size={32} />
           ),
         }}
       />
@@ -161,13 +164,13 @@ const MyDrawer = () => {
 }
 
 const MyTabs = ({ navigation }) => {
-  const { colors } = useTheme;
+  const { colors } = useTheme();
   return (
     <Tab.Navigator
       initialRouteName="HomeStack"
       screenOptions={{
-        tabBarActiveTintColor: '#FFF2C5',
-        tabBarInactiveTintColor: 'white',
+        tabBarActiveTintColor: colors.yellow,
+        tabBarInactiveTintColor: colors.white,
         tabBarStyle: {
           ...Platform.select({
             ios: {
@@ -180,7 +183,7 @@ const MyTabs = ({ navigation }) => {
               },
             },
           }),
-          backgroundColor: "#D56A6A",
+          backgroundColor: colors.red,
           
         },
 
@@ -260,10 +263,7 @@ const MyTabs = ({ navigation }) => {
 }
 
 const HomeStack = ({ navigation }) => {
-  const [toggle, setToggle] = useState(true);
-  const toggleFunction = () => {
-    setToggle(!toggle);
-  };
+  const { colors } = useTheme();
   return (
     <Stack.Navigator>
       <Stack.Screen
@@ -273,7 +273,7 @@ const HomeStack = ({ navigation }) => {
           title: "",
           headerShadowVisible: false,
           headerStyle: {
-            backgroundColor: "#FFF2C5"
+            backgroundColor: colors.yellow
           },
           headerLeft: () => (
             <MaterialCommunityIcons
@@ -292,7 +292,7 @@ const HomeStack = ({ navigation }) => {
 }
 
 const TicketStack = ({ navigation }) => {
-
+  const { colors } = useTheme();
   return (
     <Stack.Navigator>
       <Stack.Screen
@@ -302,7 +302,7 @@ const TicketStack = ({ navigation }) => {
           title: "",
           headerShadowVisible: false,
           headerStyle: {
-            backgroundColor: "#FFF2C5"
+            backgroundColor: colors.yellow
           },
           headerLeft: () => (
             <MaterialCommunityIcons
@@ -321,6 +321,7 @@ const TicketStack = ({ navigation }) => {
 }
 
 const AnimalInfoStack = ({ navigation }) => {
+  const { colors } = useTheme();
   return (
       <Stack.Navigator>
           <Stack.Screen
@@ -330,7 +331,7 @@ const AnimalInfoStack = ({ navigation }) => {
                 title: null,
                 headerShadowVisible: false,
                 headerStyle: {
-                  backgroundColor: "#FFF2C5"
+                  backgroundColor: colors.yellow
                 },
                   headerLeft: () => (
                       <MaterialCommunityIcons
@@ -350,7 +351,7 @@ const AnimalInfoStack = ({ navigation }) => {
                 title: null,
                 headerShadowVisible: false,
                 headerStyle: {
-                  backgroundColor: "#B1D9DE"
+                  backgroundColor: colors.blue
                 },
                   headerLeft: () => (
                       <MaterialCommunityIcons

@@ -1,5 +1,5 @@
 import React from "react";
-import { ScrollView, View, Text, Image, StyleSheet } from "react-native";
+import { ScrollView, View, Text, Image, StyleSheet,Platform } from "react-native";
 import { HStack, VStack, Pressable } from "@gluestack-ui/themed";
 import { useNavigation } from "@react-navigation/native";
 
@@ -21,7 +21,7 @@ const { navigate } = useNavigation();
                     <VStack>
                         <View style={styles.line}>
                             <View style={{ position: 'absolute', top: 35, left: -20, width: 30, height: 20, backgroundColor: '#B1D9DE', borderRadius: 10, zIndex: 2, }}></View>
-                            <View style={{ width: 20, height: 150, backgroundColor: '#B1D9DE', borderRadius: 0, zIndex: 1, }}></View>
+                            <View style={{ width: 20, height: 160, backgroundColor: '#B1D9DE', borderRadius: 0, zIndex: 1, }}></View>
                             <View style={{ position: 'absolute', top: 90, right: -20, width: 30, height: 20, backgroundColor: '#B1D9DE', borderRadius: 10, zIndex: 3, }}></View>
                         </View>
                     </VStack>
@@ -48,7 +48,7 @@ const { navigate } = useNavigation();
                     <VStack>
                         <View style={styles.line}>
                             <View style={{ position: 'absolute', top: 35, left: -20, width: 30, height: 20, backgroundColor: '#B1D9DE', borderRadius: 10, zIndex: 2, }}></View>
-                            <View style={{ width: 20, height: 150, backgroundColor: '#B1D9DE', borderRadius: 0, zIndex: 1, }}></View>
+                            <View style={{ width: 20, height: 160, backgroundColor: '#B1D9DE', borderRadius: 0, zIndex: 1, }}></View>
                             <View style={{ position: 'absolute', top: 90, right: -20, width: 30, height: 20, backgroundColor: '#B1D9DE', borderRadius: 10, zIndex: 3, }}></View>
                         </View>
                     </VStack>
@@ -75,7 +75,7 @@ const { navigate } = useNavigation();
                     <VStack>
                         <View style={styles.line}>
                             <View style={{ position: 'absolute', top: 35, left: -20, width: 30, height: 20, backgroundColor: '#B1D9DE', borderRadius: 10, zIndex: 2, }}></View>
-                            <View style={{ width: 20, height: 150, backgroundColor: '#B1D9DE', borderRadius: 0, zIndex: 1, }}></View>
+                            <View style={{ width: 20, height: 160, backgroundColor: '#B1D9DE', borderRadius: 0, zIndex: 1, }}></View>
                             <View style={{ position: 'absolute', top: 90, right: -20, width: 30, height: 20, backgroundColor: '#B1D9DE', borderRadius: 10, zIndex: 3, }}></View>
                         </View>
                     </VStack>
@@ -102,7 +102,7 @@ const { navigate } = useNavigation();
                     <VStack>
                         <View style={styles.line}>
                             <View style={{ position: 'absolute', top: 35, left: -20, width: 30, height: 20, backgroundColor: '#B1D9DE', borderRadius: 10, zIndex: 2, }}></View>
-                            <View style={{ width: 20, height: 150, backgroundColor: '#B1D9DE', borderRadius: 0, zIndex: 1, }}></View>
+                            <View style={{ width: 20, height: 160, backgroundColor: '#B1D9DE', borderRadius: 0, zIndex: 1, }}></View>
                             <View style={{ position: 'absolute', top: 90, right: -20, width: 30, height: 20, backgroundColor: '#B1D9DE', borderRadius: 10, zIndex: 3, }}></View>
                         </View>
                     </VStack>
@@ -129,7 +129,7 @@ const { navigate } = useNavigation();
                     <VStack>
                         <View style={styles.line}>
                             <View style={{ position: 'absolute', top: 35, left: -20, width: 30, height: 20, backgroundColor: '#B1D9DE', borderRadius: 10, zIndex: 2, }}></View>
-                            <View style={{ width: 20, height: 150, backgroundColor: '#B1D9DE', borderRadius: 0, zIndex: 1, }}></View>
+                            <View style={{ width: 20, height: 160, backgroundColor: '#B1D9DE', borderRadius: 0, zIndex: 1, }}></View>
                             <View style={{ position: 'absolute', top: 90, right: -20, width: 30, height: 20, backgroundColor: '#B1D9DE', borderRadius: 10, zIndex: 3, }}></View>
                         </View>
                     </VStack>
@@ -160,7 +160,7 @@ const { navigate } = useNavigation();
                     <VStack>
                         <View style={styles.line}>
                             <View style={{ position: 'absolute', top: 35, left: -20, width: 30, height: 20, backgroundColor: '#B1D9DE', borderRadius: 10, zIndex: 2, }}></View>
-                            <View style={{ width: 20, height: 150, backgroundColor: '#B1D9DE', borderRadius: 0, zIndex: 1, }}></View>
+                            <View style={{ width: 20, height: 160, backgroundColor: '#B1D9DE', borderRadius: 0, zIndex: 1, }}></View>
                             <View style={{ position: 'absolute', top: 90, right: -20, width: 30, height: 20, backgroundColor: '#B1D9DE', borderRadius: 10, zIndex: 3, }}></View>
                         </View>
                     </VStack>

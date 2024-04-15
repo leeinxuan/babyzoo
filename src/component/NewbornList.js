@@ -17,7 +17,7 @@ const NewbornList = () => {
                 horizontal={true}
                 data={data[1].data}
                 renderItem={({ item }) => <NewbornDetail data={item} />}
-                keyExtractor={item => item.actname}
+                keyExtractor={item => item.babyname}
             />
         </View>
 

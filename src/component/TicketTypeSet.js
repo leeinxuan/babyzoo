@@ -2,10 +2,11 @@ import React from 'react';
 import { useState } from 'react';
 import { View, StyleSheet, Text, Pressable,Platform } from 'react-native';
 import { SelectList } from 'react-native-dropdown-select-list'
-
+import { useTheme } from '@react-navigation/native';
 
 
 const TicketTypeSet = () => {
+  const { colors } = useTheme();
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [num, setNum] = useState("1");
 
@@ -57,9 +58,9 @@ const TicketTypeSet = () => {
         save="value"
         placeholder="1"
         search={false}
-        boxStyles={{ width: 140, backgroundColor: 'white', borderColor: "#913030", borderWidth: 3, borderRadius: 15 }}
-        dropdownStyles={{ width: 140, backgroundColor: 'white', borderColor: "#913030", borderWidth: 3, borderRadius: 15 }}
-        dropdownTextStyles={{ color: "#913030" }}
+        boxStyles={{ width: 140, backgroundColor: colors.white, borderColor: colors.deepred, borderWidth: 3, borderRadius: 15 }}
+        dropdownStyles={{ width: 140, backgroundColor: colors.white, borderColor: colors.deepred, borderWidth: 3, borderRadius: 15 }}
+        dropdownTextStyles={{ color: colors.deepred }}
       />
       <View style={styles.moneycontent}>
 

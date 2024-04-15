@@ -92,15 +92,18 @@ const styles = StyleSheet.create({
     },
     more: {
         alignItems: 'center',
-        width: 51,
-        height: 22,
         backgroundColor: '#E59B9B',
         borderRadius: 6,
         ...Platform.select({
             ios: {
-                paddingTop: 4
+                width: 55,
+                height: 25,
+                paddingTop: 5,
+        
             },
             android: {
+                width: 51,
+                height: 22,
                 paddingTop: 1,
             },
         }),

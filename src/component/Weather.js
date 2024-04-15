@@ -1,9 +1,10 @@
 import React from "react";
 import { Text, FlatList, SectionList, StyleSheet, View, Image } from "react-native";
 import { VStack, Center, Box } from "@gluestack-ui/themed";
+import { useTheme } from '@react-navigation/native';
 
 const Weather = () => {
-
+    const { colors } = useTheme();
     return (
         <Center style={{flexDirection:'row',justifyContent:'space-between',margin:30,marginBottom:20}}>
             <VStack style={{alignItems:'center'}}>
@@ -13,7 +14,7 @@ const Weather = () => {
 
                     />
                 </Box>
-                <Text style={{fontSize:16,fontWeight:700,color:'#D56A6A'}}>20-25℃</Text>
+                <Text style={{fontSize:16,fontWeight:700,color:colors.red}}>20-25℃</Text>
             </VStack>
             <VStack style={{alignItems:'center'}}>
                 <Box style={styles.serveicon}>
@@ -21,7 +22,7 @@ const Weather = () => {
                         source={require('../img/humidity_high.png')}
                     />
                 </Box>
-                <Text style={{fontSize:16,fontWeight:700,color:'#D56A6A'}}>0%</Text>
+                <Text style={{fontSize:16,fontWeight:700,color:colors.red}}>0%</Text>
             </VStack>
             <VStack style={{alignItems:'center'}}>
                 <Box style={styles.serveicon}>
@@ -29,7 +30,7 @@ const Weather = () => {
                         source={require('../img/clear_day.png')}
                     />
                 </Box>
-                <Text style={{fontSize:16,fontWeight:700,color:'#D56A6A'}}>中量級</Text>
+                <Text style={{fontSize:16,fontWeight:700,color:colors.red}}>中量級</Text>
             </VStack>
 
         </Center>

@@ -12,19 +12,19 @@
          {
             "key":2,
             "actname": "樹懶寫生比賽",
-            "descriptions":"懶洋洋的魅力：它們以它們緩慢的步伐和可愛的表情而聞名於世，你將有機會在...",
+            "descriptions":"懶洋洋的魅力：它們以它們緩慢的步伐和可愛的表情而聞名於世，你將有...",
             "image": "https://github.com/leeinxuan/babyzoo/blob/main/src/img/sloth_activity.jpg?raw=true"
          },
          {
             "key":3,
             "actname": "尋找獨角獸",
-            "descriptions":"踏上一場奇幻的探險之旅，讓我們一起尋找傳說中的獨角獸！獨角獸被認為是神...",
+            "descriptions":"踏上一場奇幻的探險之旅，讓我們一起尋找傳說中的獨角獸！獨角獸...",
             "image": "https://github.com/leeinxuan/babyzoo/blob/main/src/img/unicorn_activity.jpg?raw=true"
          },
          {
             "key":4,
             "actname": "水豚君橘子秀",
-            "descriptions":"豚君總是在那裡，溫柔地注視著周圍的一切，就像是一個溫暖的微笑讓人感受到...",
+            "descriptions":"豚君總是在那裡，溫柔地注視著周圍的一切，就像是一個溫暖的微笑讓人...",
             "image": "https://github.com/leeinxuan/babyzoo/blob/main/src/img/capybara_activity.jpg?raw=true"
          }
       ]

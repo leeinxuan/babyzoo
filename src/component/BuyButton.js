@@ -1,29 +1,38 @@
 import React from "react";
 import { Text, FlatList, SectionList, StyleSheet } from "react-native";
 import {
-    AlertDialog,
-    AlertDialogBackdrop,
-    AlertDialogContent,
-    AlertDialogHeader,
-    AlertDialogCloseButton,
-    AlertDialogFooter,
-    AlertDialogBody, 
-    Center,
-    Button,
-    ButtonText,
-    Heading,
-    Icon,
-    CheckCircleIcon,
-    ButtonGroup
+  AlertDialog,
+  AlertDialogBackdrop,
+  AlertDialogContent,
+  AlertDialogHeader,
+  AlertDialogCloseButton,
+  AlertDialogFooter,
+  AlertDialogBody,
+  Center,
+  Button,
+  ButtonText,
+  Heading,
+  Icon,
+  CheckCircleIcon,
+  ButtonGroup
 } from '@gluestack-ui/themed';
+import { useDispatch } from "react-redux";
+import { addCartItem } from "../redux/cartSlice";
 
-const BuyButton = ({bgc}) => {
-    const [showAlertDialog, setShowAlertDialog] = React.useState(false)
-    return (
-        <Center mb={10} zIndex={1}>
-            <Button onPress={() => setShowAlertDialog(true)}
-            width={138} height={50} borderRadius={20} backgroundColor={bgc}
-            >
+const BuyButton = ({ bgc,type ,tickettype,num,total}) => {
+  const dispatch = useDispatch();
+  const [showAlertDialog, setShowAlertDialog] = React.useState(false)
+
+  const addToCart = () => {
+    dispatch(addCartItem({ id: Date.now(), type,quantity: num,tickettype,total }))
+    setShowAlertDialog(true);
+  };
+
+  return (
+    <Center mb={10} zIndex={1}>
+      <Button onPress={addToCart}
+        width={138} height={50} borderRadius={20} backgroundColor={bgc}
+      >
         <ButtonText fontSize={20}>訂購</ButtonText>
       </Button>
       <AlertDialog
@@ -35,7 +44,7 @@ const BuyButton = ({bgc}) => {
         <AlertDialogBackdrop />
         <AlertDialogContent borderRadius={20}>
           <AlertDialogHeader>
-            <Heading size="lg" color={bgc}><Icon as={CheckCircleIcon} color={bgc}/>完成訂購</Heading>
+            <Heading size="lg" color={bgc}><Icon as={CheckCircleIcon} color={bgc} />完成訂購</Heading>
           </AlertDialogHeader>
           <AlertDialogBody>
             <Text size="sm">
@@ -59,12 +68,12 @@ const BuyButton = ({bgc}) => {
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
-        </Center>
-    );
+    </Center>
+  );
 };
 
 const styles = StyleSheet.create({
-    
+
 })
 
 export default BuyButton;

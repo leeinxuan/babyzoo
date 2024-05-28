@@ -1,12 +1,14 @@
 import React from 'react';
 import { useState } from 'react';
-import { View, StyleSheet, Text, Pressable,Platform } from 'react-native';
+import { View, StyleSheet, Text, Pressable, Platform } from 'react-native';
 import { SelectList } from 'react-native-dropdown-select-list'
 import { useTheme } from '@react-navigation/native';
+import BuyButton from './BuyButton';
 
 const TrainTypeSet = () => {
+    const type = "遊客列車";
     const { colors } = useTheme();
-    const [selectedIndex, setSelectedIndex] = useState(0);
+    const [selectedIndex, setSelectedIndex] = useState("普通");
     const [num, setNum] = useState("1");
 
     const handleTabPress = (index) => {
@@ -27,28 +29,42 @@ const TrainTypeSet = () => {
         { key: '10', value: '10' },
     ]
 
+    const calculateTotal = () => {
+        let price = 0;
+        if (selectedIndex === "普通") {
+            price = 100;
+        } else if (selectedIndex === "優待") {
+            price = 50;
+        } else if (selectedIndex === "雙人") {
+            price = 70;
+        }
+        return num * price;
+    };
+
+    const total = calculateTotal();
+
 
 
     return (
         <View style={styles.container}>
             <View style={styles.tabsContainer}>
                 <Pressable
-                    style={[styles.tab, selectedIndex === 0 && styles.selectedTab]}
-                    onPress={() => handleTabPress(0)}
+                    style={[styles.tab, selectedIndex === "普通" && styles.selectedTab]}
+                    onPress={() => handleTabPress("普通")}
                 >
-                    <Text style={[styles.typefont, selectedIndex === 0 && styles.selectedtypefont]}>普通</Text>
+                    <Text style={[styles.typefont, selectedIndex === "普通" && styles.selectedtypefont]}>普通</Text>
                 </Pressable>
                 <Pressable
-                    style={[styles.tab, selectedIndex === 1 && styles.selectedTab]}
-                    onPress={() => handleTabPress(1)}
+                    style={[styles.tab, selectedIndex === "優待" && styles.selectedTab]}
+                    onPress={() => handleTabPress("優待")}
                 >
-                    <Text style={[styles.typefont, selectedIndex === 1 && styles.selectedtypefont]}>優待</Text>
+                    <Text style={[styles.typefont, selectedIndex === "優待" && styles.selectedtypefont]}>優待</Text>
                 </Pressable>
                 <Pressable
-                    style={[styles.tab, selectedIndex === 2 && styles.selectedTab]}
-                    onPress={() => handleTabPress(2)}
+                    style={[styles.tab, selectedIndex === "雙人" && styles.selectedTab]}
+                    onPress={() => handleTabPress("雙人")}
                 >
-                    <Text style={[styles.typefont, selectedIndex === 2 && styles.selectedtypefont]}>雙人</Text>
+                    <Text style={[styles.typefont, selectedIndex === "雙人" && styles.selectedtypefont]}>雙人</Text>
                 </Pressable>
             </View>
             <SelectList
@@ -56,19 +72,19 @@ const TrainTypeSet = () => {
                 data={data}
                 save="value"
                 placeholder="1"
-                inputStyles={{color: colors.deepblue}}
+                inputStyles={{ color: colors.deepblue, }}
                 search={false}
-                boxStyles={{ width: 140, backgroundColor: colors.white, borderColor: colors.deepblue, borderWidth: 3, borderRadius: 15 }}
-                dropdownStyles={{ width: 140, backgroundColor: colors.white, borderColor: colors.deepblue, borderWidth: 3, borderRadius: 15 }}
-                dropdownTextStyles={{ color: colors.deepblue }}
+                boxStyles={{ width: 140, backgroundColor: colors.white, borderColor: colors.deepblue, borderWidth: 3, borderRadius: 15, }}
+                dropdownStyles={{ width: 140, backgroundColor: colors.white, borderColor: colors.deepblue, borderWidth: 3, borderRadius: 15,zIndex:999 }}
+                dropdownTextStyles={{ color: colors.deepblue, }}
+                
             />
             <View style={styles.moneycontent}>
-
-                {selectedIndex === 0 && <Text style={styles.moneyfont}>${num * 30}</Text>}
-                {selectedIndex === 1 && <Text style={styles.moneyfont}>${num * 15}</Text>}
-                {selectedIndex === 2 && <Text style={styles.moneyfont}>${num * 20}</Text>}
+                <Text style={styles.moneyfont}>${total}</Text>
             </View>
-
+            <View style={styles.button}>
+                <BuyButton style={styles.button} bgc={colors.deepblue} type={type} num={num} tickettype={selectedIndex} total={total} />
+            </View>
         </View>
     );
 }
@@ -77,9 +93,8 @@ export default TrainTypeSet;
 
 const styles = StyleSheet.create({
     container: {
-        flex:1,
+        flex: 1,
         alignItems: 'center',
-        zIndex:999
     },
     tabsContainer: {
         flexDirection: 'row',
@@ -97,11 +112,11 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         ...Platform.select({
             ios: {
-              justifyContent:'center',
-              
+                justifyContent: 'center',
+
             },
             android: {
-                
+
             },
         }),
     },
@@ -117,11 +132,11 @@ const styles = StyleSheet.create({
         color: '#B1D9DE',
         ...Platform.select({
             ios: {
-              justifyContent:'center',
-              
+                justifyContent: 'center',
+
             },
             android: {
-                marginTop:8,
+                marginTop: 8,
             },
         }),
     },
@@ -129,10 +144,10 @@ const styles = StyleSheet.create({
         color: '#60969D',
         ...Platform.select({
             ios: {
-              
+
             },
             android: {
-                marginTop:5,
+                marginTop: 5,
             },
         }),
     },
@@ -140,14 +155,18 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         marginTop: 35,
-        position:'absolute',
-        top:135
+        position: 'absolute',
+        top: 135
 
     },
-    moneyfont:{
-        fontSize:24,
-        fontWeight:'bold',
-        color:'white'
-    }
-
+    moneyfont: {
+        fontSize: 24,
+        fontWeight: 'bold',
+        color: 'white'
+    },
+    button:{
+        position: 'absolute',
+        top: 230,
+        zIndex:1
+      }
 });

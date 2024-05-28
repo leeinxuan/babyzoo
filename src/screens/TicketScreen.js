@@ -17,32 +17,36 @@ const TicketScreen = () => {
     const SegmentedContent = () => {
         if (selectedIndex == 1) {
             return (
-                <Box flex={1} mt={35} >
-                    <OrderTicketContent />
-                    <Attention />
+                <Box pt={10}>
+                    <ScrollView
+                        showsVerticalScrollIndicator={false}>
+                        <Box flex={1} mt={25} >
+                            <OrderTicketContent />
+                            <Attention />
+                        </Box>
+                    </ScrollView>
                 </Box>
             )
         } else {
             return (
-                <Center flex={1} >
-                    <MyTicket />
+                <Center flex={1} mt={40}>
+                    <MyTicket/>
                 </Center>
             )
         }
     }
 
     return (
-        <ScrollView
+        <View
             showsVerticalScrollIndicator={false}
-            style={{ flex: 1, backgroundColor: colorMode == "light"?colors.yellow:colors.darkbgc }} >
+            style={{ flex: 1, backgroundColor: colorMode == "light" ? colors.yellow : colors.darkbgc }} >
             <SegmentedControlTab
                 values={["我的門票", "我要買票"]}
                 tabStyle={{
-                    backgroundColor: colorMode == "light"?colors.yellow:colors.darkbgc,
+                    backgroundColor: colorMode == "light" ? colors.yellow : colors.darkbgc,
                     marginTop: 10,
                     borderColor: "white",
                     borderWidth: 3,
-
                 }}
                 activeTabStyle={{
                     backgroundColor: "#B1D9DE",
@@ -62,7 +66,7 @@ const TicketScreen = () => {
                 onTabPress={(index) => setSelectedIndex(index)}
             />
             <SegmentedContent />
-        </ScrollView>
+        </View>
     );
 }
 

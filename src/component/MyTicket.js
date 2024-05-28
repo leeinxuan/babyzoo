@@ -1,14 +1,28 @@
-import React, { useState } from 'react';
-import SegmentedControlTab from "react-native-segmented-control-tab";
-import { Box, Text, Center } from "@gluestack-ui/themed";
+import React from 'react';
+import { FlatList} from "react-native";
+import {Text} from "@gluestack-ui/themed";
+import { useSelector } from "react-redux";
+import { selectCartItems } from "../redux/cartSlice";
+
+
+import TicketDetail from './TicketDetail';
 
 
 export default function MyTicket() {
+   const cartItems = useSelector(selectCartItems);
 
    return (
-      <Center mt={100}>
-         <Text fontSize={24} color='#B1D9DE'>您尚未購票</Text>
-      </Center>
-      
+      cartItems.length === 0 ? (
+         <Text style={{ fontSize: 24, color: '#D56A6A' }}>您尚未購票</Text>
+      ) : (<FlatList
+         showsVerticalScrollIndicator={false}
+         data={cartItems}
+         keyExtractor={(item) => item.id.toString()}
+         renderItem={({ item }) => (
+            <TicketDetail item={item}/>
+         )}
+      />)
+
+
    );
 }

@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import SegmentedControlTab from "react-native-segmented-control-tab";
-import { Box, Text, Center, VStack, HStack } from "@gluestack-ui/themed";
+import { Box, Center} from "@gluestack-ui/themed";
 import { Platform, StyleSheet } from "react-native";
 import { useTheme } from '@react-navigation/native';
 import TicketTypeSet from './TicketTypeSet';
 import TrainTypeSet from './TrainTypeSet';
-import BuyButton from './BuyButton';
 import Calendar from './Calendar';
 
 
@@ -20,7 +19,6 @@ export default function OrderTicketContent() {
                 <Box style={styles.orderTrain}>
                     <Calendar bgc={colors.deepblue} />
                     <TrainTypeSet />
-                    <BuyButton bgc={colors.deepblue} />
                 </Box>
 
             )
@@ -29,7 +27,6 @@ export default function OrderTicketContent() {
                 <Box style={styles.orderTicket} >
                     <Calendar bgc={colors.deepred} />
                     <TicketTypeSet />
-                    <BuyButton bgc={colors.deepred} />
                 </Box>
             )
         }

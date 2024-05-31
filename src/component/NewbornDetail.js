@@ -112,7 +112,7 @@ const styles = StyleSheet.create({
     more: {
         alignItems: 'center',
         backgroundColor: '#E59B9B',
-        borderRadius: 6,
+        borderRadius: 11,
         ...Platform.select({
             ios: {
                 width: 55,

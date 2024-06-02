@@ -2,7 +2,7 @@ import React from "react";
 import {  StyleSheet } from "react-native";
 import { useTheme } from '@react-navigation/native';
 import {
-    Box, Button, ButtonText,
+    Box, Button,
     Actionsheet,
     ActionsheetBackdrop,
     ActionsheetContent,
@@ -15,10 +15,12 @@ import {
 } from '@gluestack-ui/themed';
 import { useDispatch,useSelector } from "react-redux";
 import { removeCartItem } from "../redux/cartSlice";
+import { selectColorMode } from "../redux/counterSlice";
 
 
 const TicketActionSheet = ({item}) => {
     const { colors } = useTheme();
+    const colorMode = useSelector(selectColorMode);
     const [showActionsheet, setShowActionsheet] = React.useState(false)
     const handleClose = () => setShowActionsheet(!showActionsheet)
     const dispatch = useDispatch();
@@ -29,7 +31,7 @@ const TicketActionSheet = ({item}) => {
     };
     return (
     <Box>
-      <Button onPress={handleClose} w={45} h={45} borderRadius={50} borderColor={item.type == "入園門票" ? colors.red : colors.deepblue} borderWidth={3} bgColor="#FFF2C5" >
+      <Button onPress={handleClose} w={45} h={45} borderRadius={50} borderColor={item.type == "入園門票" ? colors.red : colors.deepblue} borderWidth={3} bgColor={colorMode == "light" ? colors.yellow:colors.darkbgc} >
       <Icon as={ThreeDotsIcon} m="$2" w="$7" h="$7" color={item.type == "入園門票" ? colors.red : colors.deepblue}/>
       </Button>
       <Actionsheet isOpen={showActionsheet} onClose={handleClose}>

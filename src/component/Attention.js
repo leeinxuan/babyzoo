@@ -9,7 +9,7 @@ const Attention = () => {
     const { colors } = useTheme();
     const colorMode = useSelector(selectColorMode);
     return (
-        <Center p={35}>
+        <Center p={35} marginBottom={60}>
             <View style={styles.textStyle}>
                 <Text style={{ fontSize: 24, fontWeight: 'bold', color: colorMode == "light" ? colors.deepblue : colors.white, zIndex: 2 }}>注意事項</Text>
                 <View style={{ width: 125, height: 16, backgroundColor: colorMode == "light" ? colors.white : colors.deepblue, borderRadius: 10, zIndex: 1, top: -12 }}></View>

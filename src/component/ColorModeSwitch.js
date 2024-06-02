@@ -12,7 +12,7 @@ const ColorModeSwitch = () =>{
     return(
         <HStack mt="$10" space={8} alignItems="center">
             <Text size="lg" px="$2" color={colorMode == "light"?colors.deepblue:"white"}>
-                {colorMode == "light"?"Light Mode":"Dark Mode"}
+                {colorMode == "light"?"日間模式":"夜間模式"}
             </Text>
             <Switch
             name="light Mode"

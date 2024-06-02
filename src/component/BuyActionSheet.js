@@ -1,4 +1,6 @@
 import React from "react";
+import { useEffect } from "react";
+import { Keyboard } from "react-native";
 import { useTheme } from '@react-navigation/native';
 import {
   Box, Button, ButtonText,
@@ -9,7 +11,7 @@ import {
   ActionsheetDragIndicator,
   KeyboardAvoidingView,
   VStack, HStack, Image, Text, FormControl, FormControlLabel, FormControlLabelText, Input,
-  InputSlot, InputIcon, LeadingIcon, InputField
+  InputSlot, InputField
 } from '@gluestack-ui/themed';
 import { useDispatch } from "react-redux";
 import { addCartItem } from "../redux/cartSlice";
@@ -19,7 +21,23 @@ import BuyNotification from "./BuyNotification";
 const BuyActionSheet = ({ payOpen, payClose, bgc, type, tickettype, num, total }) => {
   const { colors } = useTheme();
   const dispatch = useDispatch();
-  const [showAlertDialog, setShowAlertDialog] = React.useState(false)
+  const [showAlertDialog, setShowAlertDialog] = React.useState(false);
+  const [snapPoints, setSnapPoints] = React.useState([50]);
+
+  useEffect(() => {
+    const keyboardDidShowListener = Keyboard.addListener("keyboardDidShow", () => {
+      setSnapPoints([75]);
+    });
+    const keyboardDidHideListener = Keyboard.addListener("keyboardDidHide", () => {
+      setSnapPoints([50]);
+    });
+
+    return () => {
+      keyboardDidHideListener.remove();
+      keyboardDidShowListener.remove();
+    };
+  }, []);
+
 
   const addToCart = () => {
     dispatch(addCartItem({ id: Date.now(), type, quantity: num, tickettype, total }))
@@ -32,7 +50,7 @@ const BuyActionSheet = ({ payOpen, payClose, bgc, type, tickettype, num, total }
       <Actionsheet
         isOpen={payOpen}
         onClose={payClose}
-        snapPoints={[50]}
+        snapPoints={snapPoints}
       >
         <KeyboardAvoidingView
           behavior="position"
@@ -67,31 +85,63 @@ const BuyActionSheet = ({ payOpen, payClose, bgc, type, tickettype, num, total }
                   />
                 </Box>
                 <VStack flex={1}>
-                  <Text fontWeight="$bold">Mastercard</Text>
-                  <Text>Card ending in 2345</Text>
+                  <Text fontWeight="$bold" fontSize={25}>Mastercard</Text>
                 </VStack>
               </HStack>
               <FormControl mt={36}>
-                <FormControlLabel>
-                  <FormControlLabelText>
-                    Confirm security code
-                  </FormControlLabelText>
-                </FormControlLabel>
-                <Input w="$full">
-                  <InputSlot>
-                    <InputIcon as={LeadingIcon} ml="$2" />
-                  </InputSlot>
-                  <InputField placeholder="CVC/CVV" />
-                </Input>
-                <Button onPress={addToCart} mt={20} borderRadius={15} bgColor={colors.deepblue} h={50}
-                >
-                  <ButtonText fontSize={22}>Pay ${total}</ButtonText>
-                </Button>
+                <Box mb={10}>
+                  <FormControlLabel>
+                    <FormControlLabelText>
+                      信用卡卡號
+                    </FormControlLabelText>
+                  </FormControlLabel>
+                  <HStack>
+                    <Input w={72} >
+                      <InputSlot>
+                      </InputSlot>
+                      <InputField placeholder="XXXX"/>
+                    </Input>
+                    <Box justifyContent="center" ml={5} mr={5}><Text>-</Text></Box>
+                    <Input w={72}>
+                      <InputSlot>
+                      </InputSlot>
+                      <InputField placeholder="XXXX"/>
+                    </Input>
+                    <Box justifyContent="center" ml={5} mr={5}><Text>-</Text></Box>
+                    <Input w={72}>
+                      <InputSlot>
+                      </InputSlot>
+                      <InputField placeholder="XXXX"/>
+                    </Input>
+                    <Box justifyContent="center" ml={5} mr={5}><Text>-</Text></Box>
+                    <Input w={72}>
+                      <InputSlot>
+                      </InputSlot>
+                      <InputField placeholder="XXXX"/>
+                    </Input>
+                  </HStack>
+                </Box>
+                <Box>
+                  <FormControlLabel>
+                    <FormControlLabelText>
+                      確認安全碼
+                    </FormControlLabelText>
+                  </FormControlLabel>
+                  <Input w="$full">
+                    <InputSlot>
+                    </InputSlot>
+                    <InputField placeholder="CVC/CVV" />
+                  </Input>
+                  <Button onPress={addToCart} mt={20} borderRadius={15} bgColor={colors.deepblue} h={50}
+                  >
+                    <ButtonText fontSize={22}>付款 ${total}</ButtonText>
+                  </Button>
+                  </Box>
               </FormControl>
-            </VStack>
-          </ActionsheetContent>
-        </KeyboardAvoidingView>
-      </Actionsheet>
+          </VStack>
+        </ActionsheetContent>
+      </KeyboardAvoidingView>
+    </Actionsheet >
       <BuyNotification
         isOpen={showAlertDialog}
         onClose={() => setShowAlertDialog(false)}

@@ -185,7 +185,7 @@ const MyTabs = ({ navigation }) => {
     <Tab.Navigator
       initialRouteName="HomeStack"
       screenOptions={{
-        tabBarActiveTintColor: colors.blue,
+        tabBarActiveTintColor: colors.yellow,
         tabBarInactiveTintColor: colors.white,
         tabBarStyle: {
           ...Platform.select({

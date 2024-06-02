@@ -189,7 +189,7 @@ const { navigate } = useNavigation();
                             onPress={() => navigate('AnimalInfo12')}
                         >
                         <Image
-                            source={require('../img/humanbaby.jpeg')}
+                            source={require('../img/humanbaby2.jpeg')}
                             style={styles.activitImg} />
                         <View style={styles.textsection}>
                             <Text style={{ fontSize: 16, fontWeight: '500', color: 'black', zIndex: 2 }}>小人類</Text>

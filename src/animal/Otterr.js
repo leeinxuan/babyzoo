@@ -1,11 +1,37 @@
 import React, { useState, useEffect } from "react";
-import { ScrollView, View, Text, Image, StyleSheet } from "react-native";
-import { HStack, VStack } from "@gluestack-ui/themed";
+import { View, Text, Image, StyleSheet, Dimensions } from "react-native";
+import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 import { Audio } from 'expo-av';
 import { IconButton } from 'react-native-paper';
+import { Ionicons } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
+import Carousel from 'react-native-snap-carousel';
 
 
 const Penguin = ({ }) => {
+    const boxHeight = useSharedValue(200);
+    const opacity = useSharedValue(0);
+    const [icon, setIcon] = useState("downcircleo");
+    // creating worklet via useAnimatedStyle, and incorporating the withTiming method
+    const boxAnimation = useAnimatedStyle(() => {
+        return {
+            height: withTiming(boxHeight.value, { duration: 150 }),
+        };
+    });
+
+    const textOpacityAnimation = useAnimatedStyle(() => {
+        return {
+            opacity: withTiming(opacity.value, { duration: 900 }),
+        };
+    });
+
+    const [showWelcome, setShowWelcome] = useState(false);
+    const toggleHeight = () => {
+        boxHeight.value === 600 ? boxHeight.value = 200 : boxHeight.value = 600;
+        setShowWelcome(prevState => !prevState);
+        opacity.value = !opacity.value;
+        setIcon(prevIcon => prevIcon === "downcircleo" ? "upcircleo" : "downcircleo"); // Toggle icon
+    };
     const [sound, setSound] = useState(null);
     const [isPlaying, setIsPlaying] = useState(false);
 
@@ -35,68 +61,80 @@ const Penguin = ({ }) => {
             }
             : undefined;
     }, [sound]);
+    const images = [
+        { id: 1, source: require('../img/otterbaby.jpeg') },
+        { id: 2, source: require('../img/otterbabyy2.jpeg') },
+        { id: 3, source: require('../img/otterbabyy3.jpeg') },
+        { id: 4, source: require('../img/otterbabyy4.jpeg') },
+        { id: 5, source: require('../img/otterbabyy5.jpeg') },
+    ];
+
+    const renderItem = ({ item }) => (
+        <Image source={item.source} style={styles.carouselImage} />
+    );
+
     return (
         <View>
-            <View style={styles.imgArrange}>
-                <VStack>
-                    <Image
-                        source={require('../img/otterbaby.jpeg')}
-                        style={styles.activitImg} />
-                </VStack>
-                <VStack>
-                    <Image
-                        source={require('../img/otterbabyy2.jpeg')}
-                        style={styles.activitImg} />
-                </VStack>
-                <VStack>
-                    <Image
-                        source={require('../img/otterbabyy3.jpeg')}
-                        style={styles.activitImg} />
-                </VStack>
-            </View>
+            <Carousel
+                data={images}
+                renderItem={renderItem}
+                sliderWidth={Dimensions.get('window').width}
+                itemWidth={190}
+                loop={true}
+                autoplay={true}
+                autoplayDelay={500}
+                autoplayInterval={3000}
+            />
             <View style={styles.activitySection1}>
                 <View style={styles.textStyle}>
                     <Text style={{ fontSize: 24, fontWeight: 'bold', color: 'black', zIndex: 2 }}>Ocean Otter</Text>
                     <View style={{ width: 170, height: 16, backgroundColor: '#FFF2C5', borderRadius: 10, zIndex: 1, top: -12 }}></View>
                 </View>
-                <View style={styles.textStyle2}>
-                    <Text style={{ fontSize: 21, fontWeight: 'bold', color: 'black', zIndex: 2, top: 20 }}>本館位置</Text>
-                    <Text style={{ fontSize: 21, fontWeight: 'bold', color: 'black', zIndex: 2, top: 20 }}>飄飄海獺館</Text>
-                    <View style={{ width: 260, height: 80, backgroundColor: 'white', borderRadius: 10, zIndex: 1, top: -45 }}></View>
-                </View>
-                <View style={styles.container1}>
-                    <View style={styles.textContainer}>
-                        <Text style={{ fontWeight: 'bold', fontSize: 21, zIndex: 2 }}>地理分佈</Text>
-                        <View style={{ width: 90, height: 20, backgroundColor: '#FFF2C5', borderRadius: 10, zIndex: 1, top: -15 }}></View>
+                <View style={styles.app}>
+                    <Animated.View style={[styles.box, boxAnimation]}>
+                    <View style={styles.moreButtonContainer}>
+                    <AntDesign name={icon} size={30} color="#60969D" onPress={() => toggleHeight()}/>
                     </View>
-                    <View style={styles.textContainer2}>
-                        <Text style={{ fontWeight: 'bold', fontSize: 21, zIndex: 2 }}>形態特徵</Text>
-                        <View style={{ width: 90, height: 20, backgroundColor: '#FFF2C5', borderRadius: 10, zIndex: 1, top: -15 }}></View>
-                    </View>
-                </View>
-                <View style={styles.imgArrange1}>
-                    <VStack>
-                        <View style={styles.textsection3}>
-                            <Text style={{ fontSize: 16, fontWeight: '500', color: 'black', }}>三個不同的亞種，分別位於美國加州、阿拉斯加及俄羅斯等地。</Text>
+                        <View style={styles.textStyle2}>
+                            <Text style={{ fontSize: 21, fontWeight: 'bold', color: 'black' }}>本館位置</Text>
+                            <Text style={{ fontSize: 21, fontWeight: 'bold', color: 'black' }}>飄飄海獺館</Text>
                         </View>
-                    </VStack>
-                    <VStack>
-                        <View style={styles.line}>
-                            <View style={{ position: 'absolute', left: -170, width: 340, height: 3, backgroundColor: '#3C3C3C', borderRadius: 10, zIndex: 2, }}></View>
-                            <View style={{ width: 3, height: 200, backgroundColor: '#3C3C3C', borderRadius: 0, zIndex: 1, }}></View>
-                        </View>
-                    </VStack>
-                    <VStack>
-                        <View style={styles.textsection2}>
-                            <Text style={{ fontSize: 16, fontWeight: '500', color: 'black' }}>1. 毛皮具有清潔與防水性。</Text>
+                        <View style={styles.container2}>
+                                    <Ionicons name="earth-sharp" size={50} color="black" />
+                                    <AntDesign name="idcard" size={50} color="black" />
+                                </View>
+                        <View style={styles.container1}>
+                                    <View style={styles.textContainer}>
+                                        <Text style={{ fontWeight: 'bold', fontSize: 21, zIndex: 2 }}>地理分佈</Text>
+                                        <View style={{ width: 90, height: 20, backgroundColor: '#FFF2C5', borderRadius: 10, zIndex: 1, top: -15 }} />
+                                    </View>
+                                    <View style={styles.textContainer2}>
+                                        <Text style={{ fontWeight: 'bold', fontSize: 21, zIndex: 2 }}>形態特徵</Text>
+                                        <View style={{ width: 90, height: 20, backgroundColor: '#FFF2C5', borderRadius: 10, zIndex: 1, top: -15 }} />
+                                    </View>
+                                </View>
+                        {/* button that fires off toggleHeight() function every time it's pressed */}
+                       
+                        {showWelcome && (
+                            <>
+                                <Animated.View style={[styles.imgArrange1, textOpacityAnimation]}>
+                                    <View style={styles.textsection3}>
+                                        <Text style={{ fontSize: 16, fontWeight: '500', color: 'black', left: -12 }}>
+                                        三個不同的亞種，分別位於美國加州、阿拉斯加及俄羅斯等地。
+                                        </Text>
+                                    </View>
+                                    <View style={styles.line}>
+                                        <View style={{ position: 'absolute', left: -175, width: 340, height: 3, backgroundColor: '#3C3C3C', borderRadius: 10, zIndex: 2 }} />
+                                        <View style={{ width: 3, height: 180, backgroundColor: '#3C3C3C', borderRadius: 0, zIndex: 1, left: -5 }} />
+                                    </View>
+                                    <View style={styles.textsection2}>
+                                        <Text style={{ fontSize: 16, fontWeight: '500', color: 'black' }}>1. 毛皮具有清潔與防水性。</Text>
                             <Text style={{ fontSize: 16, fontWeight: '500', color: 'black' }}>2. 海獺不是仰躺著浮在水面上，就是潛入海床覓食。</Text>
                             <Text style={{ fontSize: 16, fontWeight: '500', color: 'black' }}>3. 頭部較短而寬闊，吻突較為短鈍。上脣與臉頰相當發達，覆有濃密的硬鬚。</Text>
-                        </View>
-                    </VStack>
-                </View>
-            </View>
-            <View style={styles.activitySection}>
-                <View style={styles.musicbox}>
+                                    </View>
+                                </Animated.View>
+                                <Animated.View style={[styles.activitySection1, textOpacityAnimation]}>
+                                <View style={styles.musicbox}>
                     <Image
                         source={require('../img/otter_song2.jpeg')}
                         style={styles.activitImg1} />
@@ -111,6 +149,13 @@ const Penguin = ({ }) => {
                         </View>
                     </View>
                 </View>
+                                </Animated.View>
+                            </>
+                        )}
+                    </Animated.View>
+                </View>
+            </View>
+            <View style={styles.activitySection}>
                 <View style={styles.newstextsection}>
                     <Text style={styles.newstext}>我要認養</Text>
                 </View>
@@ -152,7 +197,29 @@ const styles = StyleSheet.create({
     },
     container1: {
         flexDirection: 'row', // 水平排列
-
+        marginTop: 10,
+        marginLeft: 3,
+    },
+    container2: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        paddingHorizontal: 35,
+        marginTop: 20,// Adjust spacing as needed
+    },
+    box: {
+        width: 350,
+        backgroundColor: 'white',
+        borderRadius: 15,
+        marginTop: 20,
+        padding: 20,
+        display: 'flex'
+    },
+    moreButtonContainer: {
+        position: 'absolute',
+        top: 20,
+        right: 20,
+        zIndex: 1,
     },
     textContainer: {
         paddingHorizontal: 10, // 文字間距
@@ -168,6 +235,10 @@ const styles = StyleSheet.create({
     },
     activitySection: {
         margin: 20,
+        alignItems: 'center',
+    },
+    activitySection1: {
+        marginTop: 50,
         alignItems: 'center',
     },
     newstextsection: {
@@ -191,7 +262,7 @@ const styles = StyleSheet.create({
     },
     container: {
         justifyContent: 'center',
-        backgroundColor: '#ffffff',
+        backgroundColor: '#B1D9DE',
         padding: 10,
         width: 70,
         height: 60,
@@ -207,26 +278,16 @@ const styles = StyleSheet.create({
         width: 130,
         height: 130,
         borderRadius: 35,
-        marginRight: 40,
+        marginRight: 15,
     },
     musicbox: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         marginTop: 15,
     },
-    imgArrange: {
-        flexDirection: 'row',
-        top: 30,
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        marginBottom: 30,
-        marginRight: 6,
-        marginLeft: 6,
-    },
-    activitImg: {
-        width: 120,
-        height: 120,
-        borderRadius: 35,
-        zIndex: 1,
+    carouselImage:{
+        width:180,
+        height:180,
+        borderRadius: 25,
     },
 })

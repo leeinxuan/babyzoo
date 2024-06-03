@@ -18,6 +18,7 @@ import {
   import { setGeneralAccountInfo } from "../redux/accountSlice";
   import { selectGeneral } from "../redux/accountSlice";
   import { useDispatch, useSelector } from "react-redux";
+import { setLogout } from "../redux/accountSlice";
   
   const GeneralAccountScreen = () => {
     const general = useSelector(selectGeneral);
@@ -128,6 +129,13 @@ import {
           }}
         >
           <ButtonText>Submit</ButtonText>
+        </Button>
+        <Button
+          mt="$2"
+          action="secondary"
+          onPress={() => dispatch(setLogout())}
+        >
+          <ButtonText>Log out</ButtonText>
         </Button>
       </VStack>
       </ScrollView>

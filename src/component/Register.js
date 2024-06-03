@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { Text, TouchableOpacity, View, StyleSheet, TextInput, Image, ScrollView } from "react-native";
+import { Text, TouchableOpacity, View, StyleSheet, TextInput, ScrollView, Image } from "react-native";
+import { Center } from "@gluestack-ui/themed";
 import { useTheme } from '@react-navigation/native';
 import { useSelector } from "react-redux";
 import { selectColorMode } from "../redux/counterSlice";
 import { FontAwesome6 } from '@expo/vector-icons';
 import { Fontisto } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
-import { Center } from "@gluestack-ui/themed";
+import { MaterialIcons } from '@expo/vector-icons';
 import { useDispatch } from "react-redux";
-import { gotoSignUp, setLogin } from "../redux/accountSlice";
+import { gotoSignIn, setLogin } from "../redux/accountSlice";
 
-const Login = () => {
+const Register = () => {
     const [email, setEmail] = useState('');
     const [emailFocused, setEmailFocused] = useState(false);
     const [password, setPassword] = useState('');
@@ -18,9 +19,10 @@ const Login = () => {
     const [isRemember, setIsRemember] = useState(false);
     const navigation = useNavigation();
 
+    const dispatch = useDispatch();
+
     const { colors } = useTheme();
     const colorMode = useSelector(selectColorMode);
-    const dispatch = useDispatch();
     return (
         <ScrollView style={{ backgroundColor: colorMode == "light" ? colors.yellow : colors.darkbgc }}>
             <Center mt={10}>
@@ -30,12 +32,33 @@ const Login = () => {
                 />
             </Center>
             <View style={styles.textStyle}>
-                <Text style={{ fontSize: 24, fontWeight: 'bold', color: '#60969D', zIndex: 2 }}>登入</Text>
+                <Text style={{ fontSize: 24, fontWeight: 'bold', color: '#60969D', zIndex: 2 }}>註冊</Text>
                 <View style={{ width: 120, height: 16, backgroundColor: 'white', borderRadius: 10, zIndex: 1, top: -15 }}></View>
             </View>
             <View style={styles.userStyle}>
                 <FontAwesome6 name="user-large" size={20} color='#60969D' />
                 <Text style={{ fontSize: 21, fontWeight: 'bold', color: '#60969D', zIndex: 2, marginLeft: 10, marginTop: -3 }}>帳號</Text>
+            </View>
+            <View style={styles.putStyle}>
+                <TextInput
+                    style={[
+                        styles.input,
+                        styles.emailInput,
+                        emailFocused && styles.inputFocused,
+                    ]}
+                    placeholder="電子郵件"
+                    keyboardType="email-address"
+                    value={email}
+                    onChangeText={setEmail}
+                    onFocus={() => setEmailFocused(true)}
+                    onBlur={() => setEmailFocused(false)}
+                    autoCapitalize="none"
+                    placeholderTextColor="#ffffff"
+                />
+            </View>
+            <View style={styles.userStyle}>
+                <MaterialIcons name="email" size={20} color='#60969D' />
+                <Text style={{ fontSize: 23, fontWeight: 'bold', color: '#60969D', zIndex: 2, marginLeft: 10, marginTop: -3 }}>信箱</Text>
             </View>
             <View style={styles.putStyle}>
                 <TextInput
@@ -78,18 +101,15 @@ const Login = () => {
             <View style={styles.checkboxContainer}>
                 <TouchableOpacity onPress={() => setIsRemember(!isRemember)}>
                     <Text style={styles.checkboxText}>
-                        {isRemember ? '☑' : '☐'} 記住密碼
+                        {isRemember ? '☑' : '☐'} 我已閱讀並同意條款
                     </Text>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => navigation.navigate('ForgotPassword')}>
-                    <Text style={styles.forgotPassword}>忘記密碼?</Text>
                 </TouchableOpacity>
             </View>
             <TouchableOpacity style={styles.button}>
-                <Text style={styles.buttonText}>登入</Text>
+                <Text style={styles.buttonText}>註冊</Text>
             </TouchableOpacity>
             <Text style={styles.orText}>
-                或是 <Text onPress={() => {dispatch(gotoSignUp());}} style={styles.register}>註冊</Text>
+                或是 <Text onPress={() => { dispatch(gotoSignIn()); }} style={styles.register}>登入</Text>
             </Text>
 
         </ScrollView>
@@ -170,6 +190,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         marginTop: 16,
         fontSize: 16,
+        marginBottom:30
     },
     register: {
         color: '#fe9e49',
@@ -191,4 +212,4 @@ const styles = StyleSheet.create({
     },
 })
 
-export default Login;
+export default Register;

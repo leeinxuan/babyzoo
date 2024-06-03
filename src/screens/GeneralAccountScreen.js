@@ -10,15 +10,14 @@ import {
     Text,
     Input,
     InputField,
-    KeyboardAvoidingView,
     Button,
-    ButtonText,
+    ButtonText,Center
   } from "@gluestack-ui/themed";
+  import { ScrollView,Image } from "react-native";
   import React, { useState, useEffect } from "react";
   import { setGeneralAccountInfo } from "../redux/accountSlice";
   import { selectGeneral } from "../redux/accountSlice";
   import { useDispatch, useSelector } from "react-redux";
-  import { setLogout } from "../redux/accountSlice";
   
   const GeneralAccountScreen = () => {
     const general = useSelector(selectGeneral);
@@ -42,7 +41,14 @@ import {
     }, [name, email, adrs, tel]);
   
     return (
+<ScrollView>
       <VStack space={2} mt={5} width="80%" alignSelf="center">
+      <Center mt={10}>
+                <Image
+                    style={{ width: 190, height: 90, resizeMode: 'contain' }}
+                    source={{ uri: 'https://github.com/leeinxuan/babyzoo/blob/main/src/img/logo2.png?raw=true' }}
+                />
+            </Center>
         <Text textAlign="center" size="2xl" pb="$4">
           GENERAL SETTINGS
         </Text>
@@ -123,10 +129,8 @@ import {
         >
           <ButtonText>Submit</ButtonText>
         </Button>
-        <Button mt="$2" onPress={() => dispatch(setLogout())}>
-              <ButtonText>Log out</ButtonText>
-            </Button>
       </VStack>
+      </ScrollView>
     );
   };
   

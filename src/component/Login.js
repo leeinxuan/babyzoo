@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, SectionList, View, StyleSheet, Image } from "react-native";
+import { Text, ScrollView, View, StyleSheet, Image } from "react-native";
 import { useTheme } from '@react-navigation/native';
 import { Input, InputField, InputIcon, InputSlot, SearchIcon, Center, Box } from '@gluestack-ui/themed';
 import { useSelector } from "react-redux";
@@ -12,13 +12,13 @@ const Login = () => {
     const { colors } = useTheme();
     const colorMode = useSelector(selectColorMode);
     return (
-        <View style={{ flex: 1, backgroundColor: colorMode == "light" ? colors.yellow : colors.darkbgc }}>
+        <ScrollView style={{ flex: 1, backgroundColor: colorMode == "light" ? colors.yellow : colors.darkbgc }}>
             <Center mt={10}>
-        <Image
-          style={{ width: 190, height: 90 ,resizeMode:'contain'}}
-          source={{ uri: 'https://github.com/leeinxuan/babyzoo/blob/main/src/img/logo2.png?raw=true' }}
-        />
-      </Center>
+                <Image
+                    style={{ width: 190, height: 90, resizeMode: 'contain' }}
+                    source={{ uri: 'https://github.com/leeinxuan/babyzoo/blob/main/src/img/logo2.png?raw=true' }}
+                />
+            </Center>
             <View style={styles.textStyle}>
                 <Text style={{ fontSize: 24, fontWeight: 'bold', color: '#60969D', zIndex: 2 }}>登入</Text>
                 <View style={{ width: 120, height: 16, backgroundColor: 'white', borderRadius: 10, zIndex: 1, top: -15 }}></View>
@@ -48,7 +48,7 @@ const Login = () => {
                     </InputSlot>
                 </Input>
             </View>
-        </View>
+        </ScrollView>
     );
 };
 

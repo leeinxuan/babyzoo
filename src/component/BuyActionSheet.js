@@ -13,9 +13,11 @@ import {
   VStack, HStack, Image, Text, FormControl, FormControlLabel, FormControlLabelText, Input,
   InputSlot, InputField
 } from '@gluestack-ui/themed';
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addCartItem } from "../redux/cartSlice";
+import { selectGeneral } from "../redux/accountSlice";
 import BuyNotification from "./BuyNotification";
+import CreditCard from "./CreditCard";
 
 
 const BuyActionSheet = ({ payOpen, payClose, bgc, type, tickettype, num, total }) => {
@@ -23,6 +25,7 @@ const BuyActionSheet = ({ payOpen, payClose, bgc, type, tickettype, num, total }
   const dispatch = useDispatch();
   const [showAlertDialog, setShowAlertDialog] = React.useState(false);
   const [snapPoints, setSnapPoints] = React.useState([50]);
+  const creditcard = useSelector(selectGeneral);
 
   useEffect(() => {
     const keyboardDidShowListener = Keyboard.addListener("keyboardDidShow", () => {
@@ -88,7 +91,8 @@ const BuyActionSheet = ({ payOpen, payClose, bgc, type, tickettype, num, total }
                   <Text fontWeight="$bold" fontSize={25}>Mastercard</Text>
                 </VStack>
               </HStack>
-              <FormControl mt={36}>
+              {/* <CreditCard/> */}
+              <FormControl mt={20}>
                 <Box mb={10}>
                   <FormControlLabel>
                     <FormControlLabelText>
@@ -99,25 +103,25 @@ const BuyActionSheet = ({ payOpen, payClose, bgc, type, tickettype, num, total }
                     <Input w={72} >
                       <InputSlot>
                       </InputSlot>
-                      <InputField placeholder="XXXX"/>
+                      <InputField placeholder="XXXX" />
                     </Input>
                     <Box justifyContent="center" ml={5} mr={5}><Text>-</Text></Box>
                     <Input w={72}>
                       <InputSlot>
                       </InputSlot>
-                      <InputField placeholder="XXXX"/>
+                      <InputField placeholder="XXXX" />
                     </Input>
                     <Box justifyContent="center" ml={5} mr={5}><Text>-</Text></Box>
                     <Input w={72}>
                       <InputSlot>
                       </InputSlot>
-                      <InputField placeholder="XXXX"/>
+                      <InputField placeholder="XXXX" />
                     </Input>
                     <Box justifyContent="center" ml={5} mr={5}><Text>-</Text></Box>
                     <Input w={72}>
                       <InputSlot>
                       </InputSlot>
-                      <InputField placeholder="XXXX"/>
+                      <InputField placeholder="XXXX" />
                     </Input>
                   </HStack>
                 </Box>
@@ -136,12 +140,12 @@ const BuyActionSheet = ({ payOpen, payClose, bgc, type, tickettype, num, total }
                   >
                     <ButtonText fontSize={22}>付款 ${total}</ButtonText>
                   </Button>
-                  </Box>
+                </Box>
               </FormControl>
-          </VStack>
-        </ActionsheetContent>
-      </KeyboardAvoidingView>
-    </Actionsheet >
+            </VStack>
+          </ActionsheetContent>
+        </KeyboardAvoidingView>
+      </Actionsheet >
       <BuyNotification
         isOpen={showAlertDialog}
         onClose={() => setShowAlertDialog(false)}

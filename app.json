@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "mid_9_babyzoo",
-    "slug": "mid_9_babyzoo",
+    "name": "fin_7_babyzoo",
+    "slug": "fin_7_babyzoo",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -30,14 +30,14 @@
     },
     "extra": {
       "eas": {
-        "projectId": "012bc657-6e28-4c69-a125-bcec491e293f"
+        "projectId": "dd5e4fce-3fdb-41c5-9797-219be209ac45"
       }
     },
     "runtimeVersion": {
       "policy": "appVersion"
     },
     "updates": {
-      "url": "https://u.expo.dev/012bc657-6e28-4c69-a125-bcec491e293f"
+      "url": "https://u.expo.dev/dd5e4fce-3fdb-41c5-9797-219be209ac45"
     }
   }
 }

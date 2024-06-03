@@ -61,11 +61,11 @@ const Penguin = ({ }) => {
             : undefined;
     }, [sound]);
     const images = [
-        { id: 1, source: require('../img/slothbaby5.jpg') },
+        { id: 1, source: require('../img/slothbaby.jpeg') },
         { id: 2, source: require('../img/slothbaby2.jpeg') },
         { id: 3, source: require('../img/slothbaby3.jpeg') },
         { id: 4, source: require('../img/slothbaby4.jpeg') },
-        { id: 5, source: require('../img/slothbaby.jpeg') },
+        { id: 5, source: require('../img/slothbaby5.jpg') },
     ];
 
     const renderItem = ({ item }) => (

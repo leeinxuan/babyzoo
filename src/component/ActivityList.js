@@ -2,6 +2,7 @@ import React from "react";
 import { FlatList, View, Text, Image, StyleSheet } from "react-native";
 import { Center } from "@gluestack-ui/themed";
 import data from "../json/front.json"
+import { useFront } from "../tanstack-query";
 import ActivityDetail from "./ActivityDetail";
 import { useSelector } from "react-redux";
 import { selectColorMode } from "../redux/counterSlice";
@@ -11,6 +12,7 @@ import { useTheme } from '@react-navigation/native';
 const ActivityList = () => {
     const { colors } = useTheme();
     const colorMode = useSelector(selectColorMode);
+    // const { data } = useFront();
     return (
 
         <View style={styles.activitySection}>

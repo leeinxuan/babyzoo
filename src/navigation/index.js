@@ -121,9 +121,9 @@ const MyDrawer = () => {
       />
       <Drawer.Screen
         name="AccountStack"
-        component={AccountScreen}
+        component={AccountStack}
         options={{
-          //headerShown: false,
+          headerShown: false,
           title: "我的帳號",
           drawerIcon: ({ color }) => (
             <MaterialCommunityIcons name="account-circle" color={color} size={32} />
@@ -616,6 +616,36 @@ const SettingtStack = ({ navigation }) => {
       <Stack.Screen
         name="Setting"
         component={SettingtScreen}
+        options={{
+          title: "",
+          headerShadowVisible: false,
+          headerStyle: {
+            backgroundColor: colorMode == "light"?colors.yellow:colors.darkbgc
+          },
+          headerLeft: () => (
+            <MaterialCommunityIcons
+              name={'menu'}
+              size={20}
+              color="#D56A6A"
+              onPress={() => navigation.openDrawer()}
+            />
+          ),
+
+        }}
+      />
+
+    </Stack.Navigator>
+  );
+}
+
+const AccountStack = ({ navigation }) => {
+  const { colors } = useTheme();
+  const colorMode = useSelector(selectColorMode);
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Setting"
+        component={AccountScreen}
         options={{
           title: "",
           headerShadowVisible: false,

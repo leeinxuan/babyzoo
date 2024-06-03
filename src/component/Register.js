@@ -32,8 +32,8 @@ const Register = () => {
                 />
             </Center>
             <View style={styles.textStyle}>
-                <Text style={{ fontSize: 24, fontWeight: 'bold', color: '#60969D', zIndex: 2 }}>註冊</Text>
-                <View style={{ width: 120, height: 16, backgroundColor: 'white', borderRadius: 10, zIndex: 1, top: -15 }}></View>
+            <Text style={{ fontSize: 24, fontWeight: 'bold', color: colorMode == "light" ? colors.deepblue : colors.white, zIndex: 2 }}>註冊</Text>
+                <View style={{ width: 120, height: 16, backgroundColor: colorMode == "light" ? colors.white : colors.deepblue, borderRadius: 10, zIndex: 1, top: -15 }}></View>
             </View>
             <View style={styles.userStyle}>
                 <FontAwesome6 name="user-large" size={20} color='#60969D' />
@@ -108,7 +108,13 @@ const Register = () => {
             <TouchableOpacity style={styles.button}>
                 <Text style={styles.buttonText}>註冊</Text>
             </TouchableOpacity>
-            <Text style={styles.orText}>
+            <Text style={{
+                textAlign: 'center',
+                marginTop: 16,
+                marginBottom:30,
+                fontSize: 16,
+                color:colorMode == "light" ? colors.black : colors.white
+            }}>
                 或是 <Text onPress={() => { dispatch(gotoSignIn()); }} style={styles.register}>登入</Text>
             </Text>
 
@@ -185,12 +191,6 @@ const styles = StyleSheet.create({
     buttonText: {
         color: '#fff',
         fontWeight: 'bold',
-    },
-    orText: {
-        textAlign: 'center',
-        marginTop: 16,
-        fontSize: 16,
-        marginBottom:30
     },
     register: {
         color: '#fe9e49',
